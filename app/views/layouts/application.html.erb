@@ -22,7 +22,7 @@
               <!--checks to see if current user is present if not give flash message  -->
 
          <!--pundit flash messages  -->
-        
+
 
 
 
@@ -39,12 +39,12 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
-                Signed in as <%= current_user.email %>.<br>
-                <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+                Logged in as <strong><%= current_user.email %></strong>.
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
                 <% else %>
-                <%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path  %>
+                <%= link_to "Sign up", new_user_registration_path %> |
+                <%= link_to "Sign in", new_user_session_path %>
                 <% end %>
-              </ul>
 
 
 
