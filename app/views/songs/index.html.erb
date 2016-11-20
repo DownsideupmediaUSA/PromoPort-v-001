@@ -1,0 +1,11 @@
+<h5>All Tracks</h5>
+
+
+<ul>
+    <% @songs.each do |song|%>
+      <li><%= song.title %></li>
+    <%end%>
+</ul>
+
+Go to <%= link_to "All Artists", artists_path%><br>
+Back to <%= link_to "DJ Dashboard", dashboard_index_path %><br>

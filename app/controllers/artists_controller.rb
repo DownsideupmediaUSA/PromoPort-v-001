@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
 
- before_action: only_admins?
+ # before_action :only_admins?
 
   def create
     @artist = Artist.new(artist_params)
