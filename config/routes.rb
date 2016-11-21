@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
 
-  root "static_pages#home"
+  root "users#show"
 
   resources :artists, only: [:show, :index] do
     resources :songs, only: [:show, :index]
