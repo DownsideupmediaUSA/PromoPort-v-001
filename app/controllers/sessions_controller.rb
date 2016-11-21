@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < Devise::SessionsController
 
 
   def create
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete
+    session.delete :username
     redirect_to root_url
   end
 end

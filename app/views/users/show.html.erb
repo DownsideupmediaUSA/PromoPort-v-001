@@ -1,7 +1,7 @@
 <h3>DJ Dashboard</h3>
 
-<% if @current_user %>
-<h3>Hi, <%= current_user.username %></h3>
+<% if user_signed_in? %>
+<h3>Hi, <%= current_user.email %></h3>
 <%end%>
 <%= link_to "All Tracks", songs_path%><br><br>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> UNDRGRND</title>
+  <title> PROMO-PORT</title>
    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
 
 
@@ -40,7 +40,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
                 Logged in as <strong><%= current_user.email %></strong>.
-                <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+                <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
                 <% else %>
                 <%= link_to "Sign up", new_user_registration_path %> |
                 <%= link_to "Sign in", new_user_session_path %>
@@ -126,7 +126,7 @@
   <script src="js/contact_me.js"></script>
 
   <!-- Theme JavaScript -->
-  <script src="js/clean-blog.min.js"></script>
+  <!-- <script src="js/clean-blog.min.js"></script> -->
 
 </body>
 

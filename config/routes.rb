@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+
+
+
+
   root "static_pages#home"
 
   resources :artists, only: [:show, :index] do
@@ -14,7 +18,9 @@ Rails.application.routes.draw do
   resources :genres
 
 
-  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/:facebook/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
-  match 'sign_out', to: 'sessions#destroy', as: 'sign_out', via: [:get, :post]
+  match 'users/sign_out' => "devise/sessions#destroy", via: [:get, :post]
+
+
 end
