@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
 
   root "users#show"
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
 
   match 'auth/:facebook/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
-  match 'users/sign_out' => "devise/sessions#destroy", via: [:get, :post]
+  # match 'users/sign_out' => "devise/sessions#destroy", via: [:get, :post]
 
 
 end
