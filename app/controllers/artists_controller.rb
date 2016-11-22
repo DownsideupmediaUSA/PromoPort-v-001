@@ -16,6 +16,8 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find_by(params[:id])
+    @comment =@song.comments.build
+    @songs = Song.all
   end
 
 
@@ -24,6 +26,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+    @songs = Song.all
   end
 
   def new

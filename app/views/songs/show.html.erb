@@ -1,25 +1,14 @@
-
-Title: <%= @song.title%>
+<h3>Title: <%= @song.title%></h3>
+<h4>Artist: <%= @song.artist.artist_name %></h4>
+<h5>Genre: <%=@song.genre %></h5>
 
 
 
 <h3>Comments</h3>
-<ul>
-  <% @songs.comment.each do |comment| %>
-    <li><%= comment.username  %> says: <%= comment.content %></li>
-  <% end %>
-</ul>
-
-<h6>Add a Comment:</h6>
-<%= form_for @song.comments.build do |f| %>
-<%= f.label "Name:"%>
-<%= f.text_field :username %>
-<%= f.label "Comment:" %>
-<%= f.text_field :content %>
-  <%= f.hidden_field :song_id %>
-
-  <%= f.submit %>
-<% end %>
+<% @song.comments.each do |comment| %>
+<%= render partial: 'comments/comment', locals: {comment: comment}%>
+<%end%>
+<%= render partial: 'comments/form', locals: {song: @song}%>
 <br>
-<%= link_to "All Tracks", songs_path %><br>
-Back to <%= link_to "DJ Dashboard", user_path %><br>
+
+Back to <%= link_to "All Tracks", songs_path%>

@@ -1,5 +1,13 @@
 <h3><%= @artist.artist_name%></h3>
 
-
-
 <br>
+
+<ul>
+
+    <% @artist.songs.each do |artist|%>
+    <li>
+        <a href="<%= artist_path(artist) %>"><%= artist.artist_name %></a>
+      </li>
+      <%end%>
+
+  </ul>

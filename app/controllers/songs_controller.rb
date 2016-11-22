@@ -9,8 +9,8 @@ class SongsController < ApplicationController
   # displays an instance of a song found via its song id.
     def show
       @song = Song.find_by(params[:song_id])
-      @artist = Artist.find_by(params[:artist_id])
-      @comments = Comment.all
+      @comments = @song.comments
+      # @artist = Artist.find_by(params[:artist_id])
     end
 # displays a form to create a new song
   def new
@@ -23,7 +23,7 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
 
     if @song.save
-      
+
     flash[:success] = "You have successfully created a new track!"
     redirect_to @song
     else
