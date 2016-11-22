@@ -1,7 +1,11 @@
 <h4>All Artists</h4>
 
 <ul>
+
     <% @artists.each do |artist|%>
-      <li><%= artist.artist_name %></li>
-    <%end%>
-</ul>
+    <li>
+        <a href="<%= artist_path(artist) %>"><%= artist.artist_name %></a>
+      </li>
+      <%end%>
+
+  </ul>
