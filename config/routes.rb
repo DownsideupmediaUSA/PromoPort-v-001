@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   end
   resources :dashboard
   resources :users
-  resources :songs, only: [:index,:show, :new, :create, :edit, :update]
-  resources :comments
+  resources :songs, only: [:index,:show, :new, :create, :edit, :update] do
+    resources :comments, only: [:show, :index, :new, :create]
+  end
+  resources :comments, only: [:index, :show, :new, :create, :edit, :update]
   resources :genres
 
 
