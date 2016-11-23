@@ -1,5 +1,5 @@
 <h3>Title: <%= @song.title%></h3>
-<h4>Artist: <%= @song.artist.artist_name %></h4>
+<h4>Artist: <%= link_to @song.artist.artist_name, artist_path %></h4>
 <h5>Genre: <%=@song.genre %></h5>
 
 
