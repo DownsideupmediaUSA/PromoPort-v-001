@@ -4,9 +4,9 @@
 
 <ul>
 
-    <% @artist.songs.each do |artist|%>
+    <% @artist.songs.each do |song|%>
     <li>
-         
+        <a href="<%= song_path(song) %>"><%= song.title %></a>
       </li>
       <%end%>
 

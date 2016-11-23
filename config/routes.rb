@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root "users#show"
 
-  resources :artists, only: [:show, :index, :new, :create, :edit, :update] do
+  resources :artists do
     resources :songs, only: [:show, :index]
   end
   resources :dashboard
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :songs, only: [:index,:show, :new, :create, :edit, :update] do
     resources :comments , only: [:index,:show, :new, :create, :edit, :update]
   end
-  resources :comments, only: [:index, :show, :new, :create, :edit, :update]
+  resources :comments
   resources :genres
 
 
