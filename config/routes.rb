@@ -10,15 +10,15 @@ Rails.application.routes.draw do
 
   root "users#show"
 
-  resources :artists, only: [:show, :index] do
+  resources :artists, only: [:show, :index, :new, :create, :edit, :update] do
     resources :songs, only: [:show, :index]
   end
   resources :dashboard
   resources :users
   resources :songs, only: [:index,:show, :new, :create, :edit, :update] do
-    resources :comments , only: [:index,:show]
+    resources :comments , only: [:index,:show, :new, :create, :edit, :update]
   end
-  resources :comments, only: [:index, :show, :new, :create]
+  resources :comments, only: [:index, :show, :new, :create, :edit, :update]
   resources :genres
 
 

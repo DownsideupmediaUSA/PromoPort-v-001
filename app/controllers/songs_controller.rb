@@ -21,11 +21,9 @@ class SongsController < ApplicationController
 # redirects user to list of all songs via index path.
   def create
     @song = Song.new(song_params)
-
     if @song.save
-
-    flash[:success] = "You have successfully created a new track!"
-    redirect_to @song
+      flash[:success] = "You have successfully created a new track!"
+      redirect_to songs_path
     else
       flash[:alert] = "Oops...your track was not saved."
     end
