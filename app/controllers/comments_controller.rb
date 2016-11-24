@@ -1,12 +1,16 @@
 class CommentsController < ApplicationController
 
   def create
+
     @song = Song.find_by(params[:song_id])
-    @comment = @song.comments.build(comment_params)
+    @comment = Comment.new(comment_params)
     @comment.save
     redirect_to @song
   end
 
+def show
+  comment = Comment.find_by(params[:comment_id])
+end
 
 
 
@@ -19,7 +23,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :song_id, :username, :user_id, user_attributes:[:username])
+    params.require(:comment).permit(:content, :song_id, :user_id, user_attributes:[:username, :id])
   end
 
 

@@ -1,14 +1,14 @@
 <h3>Title: <%= @song.title%></h3>
 <h4>Artist: <%= link_to @song.artist.artist_name, artist_path %></h4>
-<h5>Genre: <%= link_to @song.genre, genre_path %></h5>
+<h5>Genre: <%= link_to @song.genre, genres_path %></h5>
 
 
 
-<h3>Comments</h3>
-<% @song.comments.each do |comment| %>
-<%= render partial: 'comments/comment', locals: {comment: comment}%>
-<%end%>
-<%= render partial: 'comments/form', locals: {song: @song}%>
+<h3>Comments:</h3>
+<%= render partial: 'comments/comments'%>
+
+<br>
+<%= render partial: 'comments/form', locals: {song: @song} %>
 <br>
 
 Back to <%= link_to "All Tracks", songs_path%>

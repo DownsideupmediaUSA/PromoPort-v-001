@@ -18,8 +18,12 @@ Rails.application.routes.draw do
   resources :songs, only: [:index,:show, :new, :create, :edit, :update] do
     resources :comments , only: [:index,:show, :new, :create, :edit, :update]
   end
+  resources :songs
   resources :comments
-  resources :genres
+  resources :genres, only: [:index,:show, :new, :create, :edit, :update] do
+    resources :songs, only: [:show, :index]
+  end
+
 
 
   match 'auth/:facebook/callback', to: 'sessions#create', via: [:get, :post]

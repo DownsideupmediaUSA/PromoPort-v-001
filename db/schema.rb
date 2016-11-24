@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20161120131817) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content"
+    t.string   "content"
     t.string   "username"
     t.integer  "user_id"
     t.integer  "song_id"
@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(version: 20161120131817) do
     t.string   "title"
     t.integer  "artist_id"
     t.string   "genre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "artist_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

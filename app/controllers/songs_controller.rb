@@ -9,13 +9,12 @@ class SongsController < ApplicationController
   # displays an instance of a song found via its song id.
     def show
       @song = Song.find_by(params[:song_id])
-      @comments = @song.comments
+      # comment = Song.comment
       # @artist = Artist.find_by(params[:artist_id])
     end
 # displays a form to create a new song
   def new
     @song = Song.new
-    @artists = Artist.all
   end
 # creates new instance of song with info provided from above form
 # redirects user to list of all songs via index path.
@@ -23,7 +22,7 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
     if @song.save
       flash[:success] = "You have successfully created a new track!"
-      redirect_to songs_path
+      redirect_to song_path
     else
       flash[:alert] = "Oops...your track was not saved."
     end
@@ -32,8 +31,6 @@ class SongsController < ApplicationController
  #sends form to edit song (admin only sort out cancan)
   def edit
   end
-
-
 
   # displays a list of all instances of a song.
   def index
@@ -53,7 +50,6 @@ end
 def destroy
   authorize @song
   @song.destroy
-
   redirect_to songs_url, notice: 'Song was successfully destroyed.'
 end
 
@@ -62,7 +58,7 @@ end
   private
 
   def song_params
-    params.require(:song).permit(:title, :genre, :artist_id)
+    params.require(:song).permit(:title ,:genre,:artist_name, :artist_id )
   end
 
 
