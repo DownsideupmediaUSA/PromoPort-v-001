@@ -22,7 +22,7 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
     if @song.save
       flash[:success] = "You have successfully created a new track!"
-      redirect_to song_path
+      redirect_to songs_url
     else
       flash[:alert] = "Oops...your track was not saved."
     end
