@@ -1,7 +1,7 @@
 <h3>Add a Comment:</h3>
 <%= form_for @song.comments.build do |f| %>
 <% if user_signed_in? %>
-  <%= current_user.name %>
+  
   <%= f.label "Comment:" %>
   <%= f.text_field :content %>
   <%else%>

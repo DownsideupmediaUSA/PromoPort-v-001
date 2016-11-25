@@ -12,10 +12,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(params[:comment_id])
   end
 
-
-
-
-
   def index
     @comments = Comment.all
     @user = User.find_by(params[:user_id])

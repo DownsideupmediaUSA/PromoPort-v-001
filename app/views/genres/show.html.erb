@@ -1,13 +1,13 @@
-<h3><%= @genre.name%></h3>
+<h5>Genre: <%= link_to @genre.name%></h5>
 
 <br>
 
-<!-- <ul>
+<ul>
 
     <% @genre.songs.each do |song|%>
     <li>
-        <a href="<%= song_path(song) %>"><%= song.title %></a>
+        <a href="<%= genre_song_path(song) %>"><%= song.title %></a>
       </li>
       <%end%>
 
-  </ul> -->
+  </ul>

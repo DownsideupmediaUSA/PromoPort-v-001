@@ -2,7 +2,7 @@
 
 <ul>
     <% @genres.each do |genre|%>
-      <li><%= genre.name %></li>
+      <li><a href="<%= genre_path(genre) %>"><%= genre.name%></li>
     <%end%>
 </ul>
 
