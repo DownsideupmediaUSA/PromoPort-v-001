@@ -1,13 +1,14 @@
 <h3>Add a Comment:</h3>
 <%= form_for @song.comments.build do |f| %>
-<% if user_signed_in? %>
 
+ <%= f.label "Name"%>
+ <%= f.text_field :name %>
   <%= f.label "Comment:" %>
   <%= f.text_field :content %>
-  <%else%>
-  <% render new_user_session_path %>
+
+
   <%= f.hidden_field :song_id %>
-  <%= f.hiddent_field :user_id %>
-  <%end%>
+
+
   <%= f.submit %>
   <% end %>
