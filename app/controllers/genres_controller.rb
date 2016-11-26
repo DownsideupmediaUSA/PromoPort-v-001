@@ -15,8 +15,8 @@ class GenresController < ApplicationController
   end
 
   def show
-    @genre = Genre.find_by(params[:genre_id])
-    @songs = Song.all
+    @genre = Genre.find(params[:id])
+  
 
   end
 

@@ -8,7 +8,7 @@ class SongsController < ApplicationController
 
   # displays an instance of a song found via its song id.
     def show
-      @song = Song.find_by(params[:song_id])
+      @song = Song.find(params[:id])
       # comment = Song.comment
       # @artist = Artist.find_by(params[:artist_id])
     end
@@ -22,7 +22,7 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
     if @song.save
       flash[:success] = "You have successfully created a new track!"
-      redirect_to songs_url
+      redirect_to @song
     else
       flash[:alert] = "Oops...your track was not saved."
     end
@@ -58,7 +58,7 @@ end
   private
 
   def song_params
-    params.require(:song).permit(:title ,:genre, :artist_id, artist_attributes: [:artist_name])
+    params.require(:song).permit(:title ,:genre_id, :artist_id, genre_attributes: [:genre_name], artist_attributes: [:artist_name])
   end
 
 
