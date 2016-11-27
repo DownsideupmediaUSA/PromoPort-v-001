@@ -1,14 +1,11 @@
 <h3>Add a Comment:</h3>
 <%= form_for @song.comments.build do |f| %>
-
- <%= f.label "Name"%>
- <%= f.text_field :name %>
+<p>
+  <%= f.label "Name"%>
+  <%= f.collection_select :user_id, User.all, :id, :name, include_blank: 'Choose a User' %>
   <%= f.label "Comment:" %>
   <%= f.text_field :content %>
-
-
   <%= f.hidden_field :song_id %>
-
-
   <%= f.submit %>
-  <% end %>
+  </p>
+<% end %>
