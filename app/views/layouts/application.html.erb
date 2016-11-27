@@ -42,7 +42,8 @@
                 Logged in as <strong><%= current_user.email %></strong>.
                 <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %><br>
                 <%= link_to 'DJ Dashboard', root_path%> |
-                <%= link_to "All Tracks", songs_path%>
+                <%= link_to "All Tracks", songs_path%> |
+                <%= link_to "All Artists", artists_path%>
                 <% else %>
                 <%= link_to "Sign up", new_user_registration_path %> |
                 <%= link_to "Sign in", new_user_session_path %>
@@ -111,7 +112,7 @@
                           </a>
                       </li>
                   </ul>
-                  <p class="copyright text-muted">Copyright &copy; Downside Up Recordings/UNDRGRND 2016</p>
+                  <p class="copyright text-muted">Copyright &copy;2016/2017 Downside Up Recordings/PROMO-PORT </p>
               </div>
           </div>
       </div>
