@@ -21,7 +21,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    @artist = Artist.find_by(params[:artist_id])
+    @artist = Artist.find(params[:id])
 
   end
 
