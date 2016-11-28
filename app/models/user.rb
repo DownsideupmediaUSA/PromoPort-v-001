@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+
+  # after_initialize :set_default_role, :if => :new_record?
+
+
+  # def set_default_role
+  #   #if role exists self.role if not the its role is user
+  #   self.role ||= :user
+  # end
+
   has_many :comments
   has_many :songs, through: :comments
   # Include default devise modules. Others available are:

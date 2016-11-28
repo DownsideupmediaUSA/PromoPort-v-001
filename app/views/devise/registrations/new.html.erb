@@ -8,6 +8,7 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -19,6 +20,11 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin, "Check box if you are a label owner" %>
+    <%= f.check_box :admin %>
   </div>
 
   <div class="actions">
