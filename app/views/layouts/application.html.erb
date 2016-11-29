@@ -48,6 +48,12 @@
                 <%= link_to "Sign up", new_user_registration_path %> |
                 <%= link_to "Sign in", new_user_session_path %>
                 <% end %>
+                <br>
+                <% if current_user.admin? %>
+                <%= link_to "Add an Artist", new_artist_path%> |
+                <%= link_to "Add a Track", new_song_path%> |
+                <%= link_to "Add a Genre", new_genre_path%>
+                <% end %>
 
 
 

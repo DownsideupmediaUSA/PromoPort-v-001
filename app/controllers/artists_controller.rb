@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
 
   def new
@@ -29,7 +29,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    @artist = Artist.find(params[:id])
+
   end
 
 
@@ -51,9 +51,9 @@ class ArtistsController < ApplicationController
 
   private
 
-  def set_song
+  def set_artist
     #search for track- callback
-    @song = Song.find(params[:id])
+    @artist = Artist.find(params[:id])
     # authorize @song
   end
 

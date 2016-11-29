@@ -1,8 +1,8 @@
 class SongsController < ApplicationController
   #authenticates user prior to executing any action
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   #2 after actions to ensure that authorization methods have been called for the current request:
-  after_action :verify_authorized, except: [:index, :show]
+  # after_action :verify_authorized, except: [:index, :show]
   #prior to call, will set all applicapble methods according to this private callback
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 

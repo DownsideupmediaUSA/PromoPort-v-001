@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127142117) do
+ActiveRecord::Schema.define(version: 20161128211229) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "artist_name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20161127142117) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
-    t.string   "name"
+    t.string   "username"
     t.integer  "user_id"
     t.integer  "song_id"
     t.datetime "created_at", null: false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20161127142117) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
+    t.boolean  "admin",                  default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -74,9 +75,10 @@ ActiveRecord::Schema.define(version: 20161127142117) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_token_expires_at"
-    t.boolean  "admin",                  default: false
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
