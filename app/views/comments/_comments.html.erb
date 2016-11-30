@@ -1,5 +1,3 @@
 <% @song.comments.each do |comment| %>
-<ul>
-    <li><%= comment.name  %> says: <%= comment.content %></li>
+  <li>  <%= comment.user.username  %> says: <%= comment.content %></li>
   <% end %>
-</ul>
