@@ -8,7 +8,7 @@ registered users to listen to, comment on and download pre released works from A
 -Once a song is selected, user can comment on song.
 -Once a song is commented on, user will see the song updated
 with comment.
--Navigation will contain links to see all of user's comments, all songs, and all artists.
+-Navigation will contain links to see all of user's dashboard, all songs, and all artists.
 
 Application will:
 -include a has_many, a belongs_to, and a has_many :through relationship

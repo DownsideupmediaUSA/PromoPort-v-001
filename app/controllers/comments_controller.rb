@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @song = Song.find_by(params[:song_id])
     @comment = Comment.new(comment_params)
     @comment.save
-    redirect_to song_path
+    redirect_to song_path(@song) 
   end
 
   def show

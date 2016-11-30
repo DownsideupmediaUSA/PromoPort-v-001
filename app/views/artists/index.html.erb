@@ -4,7 +4,7 @@
 
     <% @artists.each do |artist|%>
     <li>
-        <a href="<%= artist_path(artist) %>"><%= artist.artist_name %></a>
+        <%= link_to artist.artist_name, artist_path(artist) %>
       </li>
       <%end%>
 
