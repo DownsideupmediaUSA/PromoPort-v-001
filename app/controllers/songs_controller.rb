@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   #authenticates user prior to executing any action
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   #2 after actions to ensure that authorization methods have been called for the current request:
   # after_action :verify_authorized, except: [:index, :show]
   #prior to call, will set all applicapble methods according to this private callback
@@ -12,18 +12,18 @@ class SongsController < ApplicationController
   # displays a list of all instances of a song.
   def index
     @songs = Song.all
+    @artist = @song.artist
   end
 
   # displays an instance of a song found via its song id.
     def show
-      # comment = Song.comment
-      # @artist = Artist.find_by(params[:artist_id])
+  
+      @artist = @song.artist
+      @genre = @song.genre
     end
 # displays a form to create a new song
   def new
     @song = Song.new
-
-
   end
 # creates new instance of song with info provided from above form
 # redirects user to list of all songs via index path.
@@ -37,7 +37,7 @@ class SongsController < ApplicationController
     end
   end
 
- #sends form to edit song (admin only sort out cancan)
+ #sends form to edit song (admin only  )
   def edit
   end
 
@@ -45,7 +45,7 @@ class SongsController < ApplicationController
   def index
     @songs = Song.all
   end
-#updates song info via submitted edit form (admin only sort out cancan)
+#updates song info via submitted edit form (admin only )
   def update
 
   respond_to do |format|

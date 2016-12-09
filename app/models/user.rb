@@ -22,4 +22,7 @@ class User < ApplicationRecord
   def self.username
     username = @user.name
   end
+
+  
+
 end

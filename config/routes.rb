@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users 
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
@@ -13,10 +13,17 @@ Rails.application.routes.draw do
   resources :artists do
     resources :songs, only: [:show, :index]
   end
+
+  get 'artists/:id/songs', to: 'artists#songs_index'
+  get 'users/:id/comments', to: 'users#comments_index'
+
   resources :dashboard
   resources :users
   resources :songs, only: [:index,:show, :new, :create, :edit, :update] do
     resources :comments , only: [:index,:show, :new, :create, :edit, :update]
+  end
+  resources :users, only: [:index,:show, :new, :create, :edit, :update] do
+    resources :comments , only: [:index,:show,]
   end
   resources :songs
   resources :comments

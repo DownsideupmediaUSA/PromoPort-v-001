@@ -1,4 +1,4 @@
-Welcome to Undrgrnd Promo Distribution
+Welcome to Promo-Port Distribution
 
 This ruby on rails music player application which allows
 registered users to listen to, comment on and download pre released works from ABC label. This application will feature the following:
@@ -18,3 +18,12 @@ Application will:
 -will allow user to login via Facebook
 -forms will display various messages upon form completion
 -the use of partials for various forms.
+
+App Installation:
+1. fork git hub repo here:
+2. run bundle Install
+3. run rails server and go here:
+
+  1. Create a new user
+  2. Search through tracks
+  3. comment on selected track

@@ -1,9 +1,17 @@
+<ul>
 <h5>DJ Dashboard</h5>
 
 <% if user_signed_in? %>
-<h3>Hi, <%= current_user.username %>!</h3>
+<h4>Hi, <%= current_user.username %>!</h4>
+
 <%end%>
 
-
-
 <%= link_to "Edit Account", edit_user_registration_path %><br>
+<br>
+<h4>Your Comments:</h4>
+<% current_user.comments.each do |c| %>
+
+<li>Track Title: "<%= c.song.title %>" oh snap..you said: "<%= c.content %>"</li>
+  <% end %>
+
+  </ul>

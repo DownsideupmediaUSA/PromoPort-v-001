@@ -1,15 +1,19 @@
-<h3><%= @artist.artist_name%></h3>
-
-<br>
 
 <ul>
+  Artist:
+  <br>
+  <h4><%= @artist.artist_name%></h4>
+  
+</ul>
 
+<p><ul>
     <% @artist.songs.each do |song|%>
-    <li>
-        <a href="<%= song_path(song) %>"><%= song.title %></a>
+      <li>
+          <a href="<%= song_path(song) %>"><%= song.title %></a>
       </li>
-      <%end%>
+    <%end%>
 
-      
+
 
   </ul>
+</p>

@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :edit, :update, :destroy]
+  before_action :set_artist, only: [:show, :edit, :update, :destroy, :songs_index]
   before_action :authenticate_user!
 
   after_action :verify_authorized, except: [:index, :show]
@@ -34,16 +34,22 @@ class ArtistsController < ApplicationController
 
   end
 
+  def songs_index
+    @songs = @artist.songs
+    render template: 'artists/index'
+  end
+
 
   private
 
   def set_artist
-    #search for track- callback
+    #searches for track(song)- callback
     @artist = Artist.find(params[:id])
     # authorize @song
   end
 
   def artist_params
+    # sets name paramater for artist
     params.require(:artist).permit(:artist_name)
   end
 
