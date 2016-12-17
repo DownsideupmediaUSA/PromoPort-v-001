@@ -7,17 +7,18 @@ class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
 
-
-
   # displays a list of all instances of a song.
   def index
-    @songs = Song.all
-    @artist = @song.artist
+    if params[:artist_id]
+      @artists = Artist.find(params[:artist_id]).artists
+    else
+      @artists = Song.all
+    end
   end
 
   # displays an instance of a song found via its song id.
     def show
-  
+
       @artist = @song.artist
       @genre = @song.genre
     end
@@ -58,10 +59,14 @@ class SongsController < ApplicationController
 end
 
 def destroy
-
   @song.destroy
   redirect_to songs_url, notice: 'Song was successfully destroyed.'
 end
+
+# def songs_index
+#   @songs = @artist.songs
+#   render template: 'artists/index'
+# end
 
 
 
@@ -69,7 +74,7 @@ end
 
   def set_song
     #search for track- callback
-    @song = Song.find(params[:id])
+    @song = Song.find_by(params[:song_id])
     # authorize @song
   end
 

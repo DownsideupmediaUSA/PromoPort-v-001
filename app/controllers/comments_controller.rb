@@ -1,8 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :set_song, only: [:create, :show, :index]
 
   def create
-    # searches for song...
-    @song = Song.find_by(params[:song_id])
     # creates a new instance of a comment for that selected song
     @comment = Comment.new(comment_params)
     #saves instance
@@ -15,10 +14,15 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all
+    @comments = @song.comments
   end
 
   private
+
+  def set_song
+    # searches for song...
+    @song = Song.find_by(params[:song_id])
+  end
 
   def comment_params
       # sets paramaters for comment

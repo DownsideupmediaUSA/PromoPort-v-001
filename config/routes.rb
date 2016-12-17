@@ -11,21 +11,22 @@ Rails.application.routes.draw do
   root "users#show"
 
   resources :artists do
-    resources :songs, only: [:show, :index]
+    resources :songs
+
   end
 
-  get 'artists/:id/songs', to: 'artists#songs_index'
-  get 'users/:id/comments', to: 'users#comments_index'
+  # get 'artists/:id/songs', to: 'artists#songs_index'
+  # get 'users/:id/comments', to: 'users#comments_index'
 
   resources :dashboard
   resources :users
-  resources :songs, only: [:index,:show, :new, :create, :edit, :update] do
-    resources :comments , only: [:index,:show, :new, :create, :edit, :update]
+  resources :songs, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :comments
   end
   resources :users, only: [:index,:show, :new, :create, :edit, :update] do
-    resources :comments , only: [:index,:show,]
+    resources :comments , only: [:index,:show ]
   end
-  resources :songs
+  # resources :songs
   resources :comments
   resources :genres, only: [:index,:show, :new, :create, :edit, :update] do
     resources :songs, only: [:show, :index]

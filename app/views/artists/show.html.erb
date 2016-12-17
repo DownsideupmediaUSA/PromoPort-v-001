@@ -3,13 +3,13 @@
   Artist:
   <br>
   <h4><%= @artist.artist_name%></h4>
-  
+
 </ul>
 
 <p><ul>
     <% @artist.songs.each do |song|%>
       <li>
-          <a href="<%= song_path(song) %>"><%= song.title %></a>
+          <%= link_to song.title, artist_song_path(@artist, song) %>
       </li>
     <%end%>
 

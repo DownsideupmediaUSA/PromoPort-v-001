@@ -34,10 +34,10 @@ class ArtistsController < ApplicationController
 
   end
 
-  def songs_index
-    @songs = @artist.songs
-    render template: 'artists/index'
-  end
+  # def songs_index
+  #   @songs = @artist.songs
+  #   render template: 'artists/index'
+  # end
 
 
   private

@@ -2,10 +2,10 @@
 
 <ul>
   <h5>All Tracks</h5>
-<% @songs.each do |song|%>
-<li>
-    <a href="<%= song_path(song) %>"><%= song.title %></a> - <a href="<%= artist_path(song) %>"><%=song.artist.artist_name%></a>
-  </li>
-  <%end%>
+  <ul>
+  <% @songs.each do |song| %>
+    <li><%= display_artist(song) %> - <%= link_to song.title, song_path(song) %></li>
+  <% end %>
+  </ul>
 
 </ul>

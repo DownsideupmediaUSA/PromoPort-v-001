@@ -1,4 +1,4 @@
-<h3>Title: <%= @song.title%></h3>
+<ul><h3>Title: <%= @song.title%></h3>
 <h4>Artist: <%= link_to @artist.artist_name, artist_path(@artist)%></h4>
 <h5>Genre: <%= @genre.genre_name%></h5>
 
@@ -10,5 +10,6 @@
 <br>
 <%= render partial: 'comments/form', locals: {song: @song} %>
 <br>
+</ul>
 
 Back to <%= link_to "All Tracks", songs_path%>

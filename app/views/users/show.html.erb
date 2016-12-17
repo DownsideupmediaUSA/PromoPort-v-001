@@ -9,12 +9,9 @@
 <%= link_to "Edit Account", edit_user_registration_path %><br>
 <br>
 <h4>Your Comments:</h4>
-<ul id="user-comment">
-<% current_user.comments.each do |c| %>
-
-<li>Track Title: "<strong><%= c.song.title %></strong>" oh snap..you said: "<strong><%= c.content %></strong>"</li>
-  <% end %>
-
+  <ul id="user-comment">
+    <% current_user.comments.each do |c| %>
+      <li>Track Title: "<%= c.song.title %>" oh snap..you said: "<%= c.content %>"</li>
+    <% end %>
   </ul>
-
-  </ul>
+</ul>
