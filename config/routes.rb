@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   root "users#show"
 
   resources :artists do
-    resources :songs
-
+    resources :songs, only: [:index, :show]
   end
 
   # get 'artists/:id/songs', to: 'artists#songs_index'
@@ -20,13 +19,13 @@ Rails.application.routes.draw do
 
   resources :dashboard
   resources :users
-  resources :songs, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :songs, only: [:index, :show] do
     resources :comments
   end
   resources :users, only: [:index,:show, :new, :create, :edit, :update] do
     resources :comments , only: [:index,:show ]
   end
-  # resources :songs
+  resources :songs, only: [:new, :create, :edit, :update]
   resources :comments
   resources :genres, only: [:index,:show, :new, :create, :edit, :update] do
     resources :songs, only: [:show, :index]

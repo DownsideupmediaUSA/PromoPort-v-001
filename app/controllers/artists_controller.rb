@@ -31,6 +31,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
+    # @song = @artist.song
 
   end
 
