@@ -1,1 +1,3 @@
-$("div.comments").append("Hello nigga");
+var html = "<%= j(render('comments/comments'))%>"
+
+$("div.comments").html(html);

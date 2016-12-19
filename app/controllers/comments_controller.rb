@@ -1,12 +1,18 @@
 class CommentsController < ApplicationController
   before_action :set_song
   def create
-    # creates a new instance of a comment for that selected song
-    @comment = Comment.new(comment_params)
-    #saves instance
-    @comment.save
-    redirect_to song_comments_path(@song)
-    # redirect_to song_path(@song)
+    @comment = @song.comments
+    @comment.user_id = current_user.id
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to song_url(@comment.song_id), notice: 'Comment was successfully created.'  }
+        format.json { render action: 'show', status: :created, location: @comment}
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
@@ -30,7 +36,7 @@ class CommentsController < ApplicationController
 
   def comment_params
       # sets paramaters for comment
-    params.require(:comment).permit(:content, :song_id, :user_id, user_attributes:[:username])
+    params.require(:comment).permit(:content)
   end
 
 
