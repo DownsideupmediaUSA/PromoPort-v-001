@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index,:show, :new, :create, :edit, :update] do
     resources :comments , only: [:index,:show ]
   end
-  resources :songs, only: [:new, :create, :edit, :update]
-  resources :comments
+  resources :songs 
+
   resources :genres, only: [:index,:show, :new, :create, :edit, :update] do
     resources :songs, only: [:show, :index]
   end

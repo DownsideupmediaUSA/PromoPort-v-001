@@ -4,7 +4,7 @@ class SongsController < ApplicationController
   #2 after actions to ensure that authorization methods have been called for the current request:
   # after_action :verify_authorized, except: [:index, :show]
   #prior to call, will set all applicapble methods according to this private callback
-  before_action :set_song, only: [:edit, :update, :destroy]
+  before_action :set_song, only: [:edit, :update, :destroy, :show]
 
 
   # displays a list of all instances of a song.
@@ -19,7 +19,7 @@ class SongsController < ApplicationController
   # displays an instance of a song found via its song id.
     def show
       @artist = Artist.find_by(params[:artist_id])
-      @song = Song.find(params[:id])
+      # @song = Song.find(params[:id])
       @genre = @song.genre
     end
 
@@ -33,12 +33,14 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     if @song.save
-      flash[:success] = "You have successfully created a new track!"
-      redirect_to @song
+      format.html { redirect_to @song, notice: 'Song was successfully created.' }
+      format.json { render :show, status: :created, location: @song }
     else
-      flash[:alert] = "Oops...your track was not saved."
+      format.html { render :new }
+      format.json { render json: @song.errors, status: :unprocessable_entity }
+      end
     end
-  end
+
 
  #sends form to edit song (admin only  )
   def edit

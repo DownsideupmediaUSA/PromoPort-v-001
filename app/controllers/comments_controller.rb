@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
-  before_action :set_song, only: [:create, :show, :index]
-
+  before_action :set_song
   def create
     # creates a new instance of a comment for that selected song
     @comment = Comment.new(comment_params)
     #saves instance
     @comment.save
-    redirect_to song_path(@song)
+    redirect_to song_comments_path(@song)
+    # redirect_to song_path(@song)
   end
 
   def show
@@ -15,6 +15,10 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @song.comments
+    respond_to do |format|
+      format.html {render 'index.html', :layout => false}
+      format.js {render 'index.js', :layout => false}
+    end
   end
 
   private

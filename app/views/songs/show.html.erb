@@ -3,13 +3,8 @@
 <h5>Genre: <%= @genre.genre_name%></h5>
 
 
+<%= link_to "Load Comments", song_comments_path(@song), :class => "load comments"%>
 
-<h4>Comments:</h4>
-<%= render partial: 'comments/comments', locals: {song: @song}%>
-
-<br>
-<%= render partial: 'comments/form', locals: {song: @song} %>
-<br>
 </ul>
 
 Back to <%= link_to "All Tracks", songs_path%>
