@@ -1,23 +1,5 @@
 class CommentsController < ApplicationController
   before_action :set_song
-  def create
-    @comment = @song.comments
-    @comment.user_id = current_user.id
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to song_url(@comment.song_id), notice: 'Comment was successfully created.'  }
-        format.json { render action: 'show', status: :created, location: @comment}
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def show
-    @comment = Comment.find(params[:id])
-  end
 
   def index
     @comments = @song.comments
@@ -26,6 +8,28 @@ class CommentsController < ApplicationController
       format.js {render 'index.js', :layout => false}
     end
   end
+
+
+  def create
+    binding.pry
+    @comment = @song.comments.new
+
+
+    if @comment.save
+      # I need to render something that just has the LI I want...
+      # why not just create a comments/show view that shows the LI of one comment?
+      # render 'comments/show', :layout => false
+      render 'create.js', :layout => false
+    else
+      render "songs/show"
+    end
+  end
+
+
+  def show
+    @comment = Comment.find(params[:id])
+  end
+
 
   private
 

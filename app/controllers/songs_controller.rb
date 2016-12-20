@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   #authenticates user prior to executing any action
-  before_action :authenticate_user!
+
   #2 after actions to ensure that authorization methods have been called for the current request:
   # after_action :verify_authorized, except: [:index, :show]
   #prior to call, will set all applicapble methods according to this private callback
@@ -9,18 +9,19 @@ class SongsController < ApplicationController
 
   # displays a list of all instances of a song.
   def index
-    if params[:artist_id]
-      @artists = Artist.find(params[:artist_id]).artists
-    else
-      @artists = Song.all
-    end
+    @songs = @artist.songs
+    # if params[:artist_id]
+    #   @artists = Artist.find(params[:artist_id]).artists
+    # else
+    #   @artists = Song.all
+    # end
   end
 
   # displays an instance of a song found via its song id.
     def show
-      @artist = Artist.find_by(params[:artist_id])
-
-
+      # @artist = Artist.find_by(params[:artist_id])
+      @comments = @song.comments
+      @comment = Comment.new
       @genre = @song.genre
     end
 
@@ -53,8 +54,7 @@ class SongsController < ApplicationController
   end
 #updates song info via submitted edit form (admin only )
   def update
-
-  respond_to do |format|
+    respond_to do |format|
     if @song.update(song_params)
       format.html { redirect_to @song, notice: 'Song was successfully updated.' }
       format.json { render :show, status: :created, location: @song }
@@ -63,19 +63,12 @@ class SongsController < ApplicationController
       format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
-end
+  end
 
-def destroy
-  @song.destroy
-  redirect_to songs_url, notice: 'Song was successfully destroyed.'
-end
-
-# def songs_index
-#   @songs = @artist.songs
-#   render template: 'artists/index'
-# end
-
-
+  def destroy
+    @song.destroy
+    redirect_to songs_url, notice: 'Song was successfully destroyed.'
+  end
 
   private
 

@@ -1,8 +1,8 @@
 class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update, :destroy, :songs_index]
-  before_action :authenticate_user!
-
-  after_action :verify_authorized, except: [:index, :show]
+  # before_action :authenticate_user!
+  #
+  # after_action :verify_authorized, except: [:index, :show]
 
 
   def new
@@ -28,6 +28,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+
   end
 
   def show
