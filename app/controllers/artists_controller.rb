@@ -7,7 +7,7 @@ class ArtistsController < ApplicationController
 
   def new
     @artist = Artist.new
-  
+
   end
 
   def create
@@ -37,10 +37,16 @@ class ArtistsController < ApplicationController
 
   end
 
-  # def songs_index
-  #   @songs = @artist.songs
-  #   render template: 'artists/index'
-  # end
+  def songs_index
+
+    @songs = @artist.songs
+    render template: 'artists/index'
+  end
+
+  def songs_post
+    @song = Song.find(params[:song_id])
+    render template: 'songs/show'
+  end
 
 
   private

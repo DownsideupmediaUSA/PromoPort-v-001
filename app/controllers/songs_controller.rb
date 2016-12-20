@@ -9,8 +9,13 @@ class SongsController < ApplicationController
 
   # displays a list of all instances of a song.
   def index
+    if params[:artist_id]
+      @songs = Artist.find(params[:artist_id]).songs
+    else
+      @songs = Song.all
+    end
     # @songs = Song.all
-    @artist = @song.artists
+    # @artist = @song.artists
   end
 
   # displays an instance of a song found via its song id.
