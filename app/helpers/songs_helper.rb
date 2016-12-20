@@ -1,5 +1,5 @@
 module SongsHelper
-  def display_song(artist)
-    link_to artist.song.title, song_path(artist.song)
-  end
+  # def display_song(artist)
+  #   link_to @song, artist_song_path( @artist, song )
+  # end
 end

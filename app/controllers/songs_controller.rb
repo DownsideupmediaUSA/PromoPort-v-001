@@ -9,33 +9,34 @@ class SongsController < ApplicationController
 
   # displays a list of all instances of a song.
   def index
-    @songs = @artist.songs
-    # if params[:artist_id]
-    #   @artists = Artist.find(params[:artist_id]).artists
-    # else
-    #   @artists = Song.all
-    # end
+    # @songs = Song.all
+    @artist = @song.artists
   end
 
   # displays an instance of a song found via its song id.
     def show
       # @artist = Artist.find_by(params[:artist_id])
+      @songs = Song.all
+      @artist = @song.artist
       @comments = @song.comments
-      @comment = Comment.new
+      # @comment = Comment.new
+
       @genre = @song.genre
     end
 
 # displays a form to create a new song
   def new
+
     @song = Song.new
   end
 
 # creates new instance of song with info provided from above form
 # redirects user to list of all songs via index path.
   def create
+    @artist = Artist.find_by(params[:artist_id])
     @song = Song.new(song_params)
     if @song.save
-      format.html { redirect_to @song, notice: 'Song was successfully created.' }
+      format.html { redirect_to @song }
       format.json { render :show, status: :created, location: @song }
     else
       format.html { render :new }

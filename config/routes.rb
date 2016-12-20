@@ -19,15 +19,14 @@ Rails.application.routes.draw do
 
   resources :dashboard
   resources :users
-  resources :songs, only: [:index, :show] do
+  resources :songs do
     resources :comments
   end
   resources :users, only: [:index,:show, :new, :create, :edit, :update] do
     resources :comments , only: [:index,:show ]
   end
-  resources :songs do
-    resources  :artists
-  end
+
+
 
   resources :genres, only: [:index,:show, :new, :create, :edit, :update] do
     resources :songs, only: [:show, :index]

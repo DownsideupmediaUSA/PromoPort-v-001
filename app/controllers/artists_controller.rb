@@ -7,14 +7,14 @@ class ArtistsController < ApplicationController
 
   def new
     @artist = Artist.new
-    authorize Artist
+  
   end
 
   def create
     #creates and saves a new artist.
     @artist = Artist.new(artist_params)
     #authorizes(admin) new artist
-    authorize @artist
+    # authorize @artist
     if @artist.save
       flash[:success] = "You have successfully created an artist!"
       redirect_to artists_path
@@ -28,6 +28,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+
 
   end
 

@@ -5,3 +5,7 @@
 
   <p><%= f.submit %></p>
 <% end %> -->
+
+
+<!-- artist index view -->
+<!-- <%= link_to artist.artist_name, songs_path(artist) %> -->
