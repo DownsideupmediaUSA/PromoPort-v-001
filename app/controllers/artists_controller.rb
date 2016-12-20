@@ -28,6 +28,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+    @song = Song.order('created_at DESC')
 
 
   end
@@ -35,18 +36,19 @@ class ArtistsController < ApplicationController
   def show
     # @song = @artist.song
 
-  end
 
-  def songs_index
-
-    @songs = @artist.songs
-    render template: 'artists/index'
   end
-
-  def songs_post
-    @song = Song.find(params[:song_id])
-    render template: 'songs/show'
-  end
+  #
+  # def songs_index
+  #
+  #   @songs = @artist.songs
+  #
+  # end
+  #
+  # def songs_post
+  #   @song = Song.find(params[:song_id])
+  #
+  # end
 
 
   private

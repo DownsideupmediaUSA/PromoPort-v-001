@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_song
+  before_action :find_song
 
   def index
     @comments = @song.comments
@@ -11,17 +11,14 @@ class CommentsController < ApplicationController
 
 
   def create
-    binding.pry
-    @comment = @song.comments.new
+   @comment = @song.comments.create(comment_params)
+   @comment.user_id = current_user.id
+   @comment.save
 
-
-    if @comment.save
-      # I need to render something that just has the LI I want...
-      # why not just create a comments/show view that shows the LI of one comment?
-      # render 'comments/show', :layout => false
-      render 'create.js', :layout => false
-    else
-      render "songs/show"
+   if @comment.save
+     redirect_to song_path(@song)
+   else
+     render 'new'
     end
   end
 
@@ -33,7 +30,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def set_song
+  def find_song
     # searches for song...
     @song = Song.find_by(params[:song_id])
   end

@@ -10,7 +10,7 @@ class SongsController < ApplicationController
   # displays a list of all instances of a song.
   def index
     if params[:artist_id]
-      @songs = Artist.find(params[:artist_id]).songs
+      @songs = Artist.find_by(params[:artist_id]).songs
     else
       @songs = Song.all
     end
@@ -20,19 +20,23 @@ class SongsController < ApplicationController
 
   # displays an instance of a song found via its song id.
     def show
-      # @artist = Artist.find_by(params[:artist_id])
-      @songs = Song.all
-      @artist = @song.artist
-      @comments = @song.comments
-      # @comment = Comment.new
-
-      @genre = @song.genre
+      if params[:artist_id]
+      @artist = Artist.find_by(id: params[:artist_id])
+      @song = @artist.songs.find_by(id: params[:id])
+      @comments = @post.comments
+      @comment = @song.comments.build
+      if @song.nil?
+        redirect_to artist_songs_path(@artist), alert: "Song not found"
+      end
+    else
+      @song = Song.find(params[:id])
+    end
     end
 
 # displays a form to create a new song
   def new
-
-    @song = Song.new
+    @artist = Artist.find_by(params[:artist_id])
+    @song = @artist.songs.new
   end
 
 # creates new instance of song with info provided from above form
