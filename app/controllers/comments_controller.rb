@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
   def create
    @comment = @song.comments.create(comment_params)
    @comment.user_id = current_user.id
+   username = current_user.username
    @comment.save
 
    if @comment.save
@@ -24,7 +25,7 @@ class CommentsController < ApplicationController
 
 
   def show
-    @comment = Comment.find(params[:id])
+    @comment = Comment.where(song_id: @song).order("created_at DESC")
   end
 
 
@@ -32,7 +33,7 @@ class CommentsController < ApplicationController
 
   def find_song
     # searches for song...
-    @song = Song.find_by(params[:song_id])
+    @song = Song.find(params[:song_id])
   end
 
   def comment_params

@@ -45,7 +45,7 @@ class SongsController < ApplicationController
     @artist = Artist.find_by(params[:artist_id])
     @song = Song.new(song_params)
     if @song.save
-      format.html { redirect_to @song }
+      format.html { redirect_to @song, notice: 'Song was successfully created.' }
       format.json { render :show, status: :created, location: @song }
     else
       format.html { render :new }
