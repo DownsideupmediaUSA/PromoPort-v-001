@@ -9,6 +9,7 @@ class SongsController < ApplicationController
 
   # displays a list of all instances of a song.
   def index
+
     if params[:artist_id]
       @songs = Artist.find_by(params[:artist_id]).songs
     else
@@ -24,8 +25,6 @@ class SongsController < ApplicationController
       @artist = Artist.find_by(id: params[:artist_id])
       @song = @artist.songs.find_by(id: params[:id])
       @release = Release.find_by(params[:release_id])
-
-      # @song = @song.releases.find_by(params[:release_id])
       @comments = @post.comments
       @comment = @song.comments.build
       if @song.nil?
@@ -69,6 +68,7 @@ class SongsController < ApplicationController
   end
 #updates song info via submitted edit form (admin only )
   def update
+
     respond_to do |format|
     if @song.update(song_params)
       format.html { redirect_to @song }
@@ -81,6 +81,7 @@ class SongsController < ApplicationController
   end
 
   def destroy
+
     @song.destroy
     redirect_to songs_url, notice: 'Song was successfully destroyed.'
   end

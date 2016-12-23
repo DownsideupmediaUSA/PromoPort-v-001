@@ -21,3 +21,6 @@
 </ul>
 
 Back to <%= link_to "All Tracks", songs_path%>
+<% if can? :create, @song %>
+  <%= link_to "Add A New Track", new_song_path(@song) %>
+<% end %>

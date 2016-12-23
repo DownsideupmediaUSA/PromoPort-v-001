@@ -1,14 +1,8 @@
 class UsersController < ApplicationController
-
-  # def index
-  #   @comments = Comment.all
-  # end
-
-
-  # def comments_index
-  #   @comments = @user.comments
-  # end
-
-
-
+  def update
+    @user = User.find(params[:id])
+    @user.toggle!(:admin)
+    flash[:success] = 'OK!'
+    redirect_to root_path
+  end
 end

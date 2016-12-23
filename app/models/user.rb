@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   enum role: [:user, :admin]
+  after_initialize :set_default_role, :if => :new_record?
   has_many :comments
   has_many :songs, through: :comments
   # Include default devise modules. Others available are:
@@ -19,10 +20,15 @@ class User < ApplicationRecord
     end
   end
 
+
+  def set_default_role
+    self.role ||= :user
+  end
+
   def self.username
     username = @user.name
   end
 
-  
+
 
 end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Pundit
+  include CanCan::ControllerAdditions
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -19,14 +19,14 @@ class ApplicationController < ActionController::Base
   end
 
   #raises a pundit not authorized error
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
-  def user_not_authorized(exception)
-    flash[:error] = "Access denied"
-    redirect_to(request.referrer || root_path)
-  end
+  # def user_not_authorized(exception)
+  #   flash[:error] = "Nice Try Sucka...Access denied!!!"
+  #   redirect_to(request.referrer || root_path)
+  # end
 
 
 
