@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  load_and_authorize_resource
   #authenticates user prior to executing any action
 
   #2 after actions to ensure that authorization methods have been called for the current request:
