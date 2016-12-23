@@ -1,15 +1,10 @@
 
 
 <ul>
-  <h5>All Artists</h5>
-    <% @artists.each do |artist|%>
-
-
+<h5>All Artists</h5>
+  <% @artists.each do |artist|%>
     <li>
-        <%= link_to artist.artist_name, artist_path(artist) %>
+      <%= link_to artist.artist_name, artist_path(artist) %>
     </li>
-
-
-      <%end%>
-
-  </ul>
+  <%end%>
+</ul>

@@ -1,22 +1,21 @@
 
 
 <%= form_for(@song) do|f| %>
-
   <div class="field"> <%= f.label :title %>:
   <%= f.text_field :title %></div>
-
   <div class="field">
-  Select an artist:
-  <%= f.collection_select :artist_id, Artist.all, :id, :artist_name %><br>
+  Select an
+  <%= f.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "Artist:" %> <br>
+  Select a
+  <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "Genre:" %><br>
+  Select a
 
-  Select a genre:
-  <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %><br>
-
-
-
+  <%= f.collection_select :release_id, Release.all, :id, :release_name, :prompt => "Release:" %><br>
+  <%= f.fields_for :releases, song.releases.build do |release_fields| %>
+    <%=release_fields.label "...or create a new release"%>
+    <%= release_fields.text_field :release_name %>
+  <%end%>
   <div class="actions">
     <%= f.submit "Create" %>
   </div>
-
-
-<% end %>
+  <%end%>

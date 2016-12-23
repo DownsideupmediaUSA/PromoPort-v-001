@@ -23,6 +23,9 @@ class SongsController < ApplicationController
       if params[:artist_id]
       @artist = Artist.find_by(id: params[:artist_id])
       @song = @artist.songs.find_by(id: params[:id])
+      @release = Release.find_by(params[:release_id])
+
+      # @song = @song.releases.find_by(params[:release_id])
       @comments = @post.comments
       @comment = @song.comments.build
       if @song.nil?
@@ -36,21 +39,23 @@ class SongsController < ApplicationController
 # displays a form to create a new song
   def new
     @artist = Artist.find_by(params[:artist_id])
-    @song = @artist.songs.new
+    @song = Song.new
   end
 
 # creates new instance of song with info provided from above form
 # redirects user to list of all songs via index path.
   def create
+    @release = Release.find_or_create_by(params[:release_id])
     @artist = Artist.find_by(params[:artist_id])
     @song = Song.new(song_params)
-    if @song.save
-      format.html { redirect_to @song, notice: 'Song was successfully created.' }
-      format.json { render :show, status: :created, location: @song }
-    else
-      format.html { render :new }
-      format.json { render json: @song, notice: 'Opps something went arye.' }
-      end
+    @song.save
+    # if @song.save
+    #   format.html { redirect_to @song, notice: 'Your track was created!' }
+    #   format.json { render :show, status: :created, location: @song }
+    # else
+    #   format.html { render :new }
+    #   format.json { render json: @song, notice: 'Opps something went arye.' }
+    #   end
     end
 
 
@@ -66,7 +71,7 @@ class SongsController < ApplicationController
   def update
     respond_to do |format|
     if @song.update(song_params)
-      format.html { redirect_to @song, notice: 'Song was successfully updated.' }
+      format.html { redirect_to @song }
       format.json { render :show, status: :created, location: @song }
     else
       format.html { render :new }
@@ -89,7 +94,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:title ,:genre_id, :artist_id, genre_attributes: [:genre_name], artist_attributes: [:artist_name])
+    params.require(:song).permit(:title ,:genre_id, :artist_id, :release_id, releases_attributes: [:release_name])
   end
 
 

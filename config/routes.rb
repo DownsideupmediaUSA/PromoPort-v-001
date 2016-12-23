@@ -11,9 +11,16 @@ Rails.application.routes.draw do
   root "users#show"
  # nested resource for an artists' songs
   resources :artists do
-    resources :songs, only: [:index, :show]
+    resources :songs
   end
-  resources :songs
+
+  resources :songs  do
+    resources :releases
+  end
+
+  resources :releases
+
+
 
   # get 'artists/:id/songs', to: 'artists#songs_index'
   # get 'users/:id/comments', to: 'users#comments_index'

@@ -15,12 +15,11 @@ class CommentsController < ApplicationController
    @comment.user_id = current_user.id
    username = current_user.username
    @comment.save
-
    if @comment.save
      redirect_to song_path(@song)
    else
      render 'new'
-    end
+   end
   end
 
 

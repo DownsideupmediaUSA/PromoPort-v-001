@@ -1,5 +1,5 @@
 $(function(){ //anonymous function
-
+/////////////COMMENTS SECTION//////////
 // server side AJAX model (have server sort out data prior to responding )
       $("a.load_comments").on("click", function(e){
        // 2 fire an ajax request to get data
@@ -11,5 +11,9 @@ $(function(){ //anonymous function
 // 1 need to hijack submit button and prevent default action
          e.preventDefault();
        })
+
+//////TRACKS ON DASHBOARD/////////
+
+    $("")
 
 });

@@ -1,33 +1,23 @@
 <ul><h3>Title: <%= @song.title%></h3>
 <h4>Artist: <%= display_artist(@song)%></h4>
-
-
+<h4>Release: <%= display_release(@song) %></h4> <br>
 
 <%= link_to "Load Comments", song_comments_path(@song), :class => "load_comments"%>
  <div class="comments">
    <ol>
-     
+     <!-- for js response -->
    </ol>
 </div>
 
 <div class="new_comment">
   <h4>Add a Comment:</h4>
-
   <%= form_for([@song, @song.comments.build]) do |f|  %>
     <p>
       <%= f.text_field :content %>
-
       <%= f.submit %>
     </p>
   <% end %>
 </div>
-
-
-
-
-
-
-
 </ul>
 
 Back to <%= link_to "All Tracks", songs_path%>

@@ -1,0 +1,11 @@
+<h4>New Release</h4>
+
+<%= form_for @release, url: releases_path do |f| %>
+
+  <div class="field">
+    <%= f.label "release_name" %>:
+    <%= f.text_field :release_name %></div>
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

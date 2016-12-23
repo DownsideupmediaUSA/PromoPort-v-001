@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128211229) do
+ActiveRecord::Schema.define(version: 20161222020259) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "artist_name"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 20161128211229) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "releases", force: :cascade do |t|
+    t.string   "release_name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "song_genres", force: :cascade do |t|
     t.integer  "song_id"
     t.integer  "genre_id"
@@ -45,14 +51,24 @@ ActiveRecord::Schema.define(version: 20161128211229) do
     t.index ["song_id"], name: "index_song_genres_on_song_id"
   end
 
+  create_table "song_releases", force: :cascade do |t|
+    t.integer  "song_id"
+    t.integer  "artist_id"
+    t.integer  "release_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_song_releases_on_artist_id"
+    t.index ["release_id"], name: "index_song_releases_on_release_id"
+    t.index ["song_id"], name: "index_song_releases_on_song_id"
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string   "title"
     t.integer  "artist_id"
     t.integer  "genre_id"
-    t.string   "genre_name"
-    t.string   "artist_name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "release_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

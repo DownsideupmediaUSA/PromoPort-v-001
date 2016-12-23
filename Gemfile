@@ -37,9 +37,13 @@ gem 'omniauth-facebook'
 
 gem "bootstrap-sass", "~> 3.1.1"
 
-gem "pundit"
+gem 'pundit'
 
 gem 'enumerize'
+
+gem 'paperclip'
+
+
 
 
 group :development, :test do

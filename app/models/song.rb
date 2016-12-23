@@ -1,6 +1,15 @@
 class Song < ApplicationRecord
   belongs_to :genre
   belongs_to :artist
+  has_many :song_releases
+  has_many :releases, through: :song_releases
   has_many :comments
-  
+
+  def releases_attributes=(release_attributes)
+    release_attributes.values.each do |release_attribute|
+      release = Release.find_or_create_by(release_attribute)
+      self.releases << release
+    end
+  end
+
 end

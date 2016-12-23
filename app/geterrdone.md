@@ -1,9 +1,6 @@
-1. fix users not displaying in dropdown for comment form. x
-2. get comments to display on song show page. x
+ set up paperclip functionality
+ clear out database
+ create new songs with info
 
-
-
-to set up pundit admin
-
-1. change strong params to include admin
-2. add admin column to users boolean default false
+ render a show view on dashboard that has a "next" function
+ show view only has image and links to that tracks show page

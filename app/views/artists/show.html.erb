@@ -2,15 +2,13 @@
 <ul>
   Artist:
   <br>
-  <h4><%= @artist.artist_name%></h4>
-
+    <h4><%= @artist.artist_name%></h4>
 </ul>
-
 <p>
   <ul>
     <% @artist.songs.each do |song|%>
       <li>
-          <%= link_to song.title, song_path(song) %>
+        <%= link_to song.title, song_path(song) %>
       </li>
     <%end%>
   </ul>
