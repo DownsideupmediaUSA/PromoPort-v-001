@@ -43,6 +43,8 @@ gem 'enumerize'
 
 gem 'paperclip'
 
+gem 'dotenv'
+
 
 
 

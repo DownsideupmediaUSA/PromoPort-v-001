@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   #authenticates user prior to executing any action
 
   #2 after actions to ensure that authorization methods have been called for the current request:
@@ -26,10 +26,10 @@ class SongsController < ApplicationController
       @artist = Artist.find_by(id: params[:artist_id])
       @song = @artist.songs.find_by(id: params[:id])
       @release = Release.find_by(params[:release_id])
-      @comments = @post.comments
+      @comments = @song.comments
       @comment = @song.comments.build
       if @song.nil?
-        redirect_to artist_songs_path(@artist), alert: "Song not found"
+        redirect_to songs_path(@artist), alert: "Song not found"
       end
     else
       @song = Song.find(params[:id])
@@ -49,14 +49,17 @@ class SongsController < ApplicationController
     @artist = Artist.find_by(params[:artist_id])
     @song = Song.new(song_params)
     @song.save
-    # if @song.save
-    #   format.html { redirect_to @song, notice: 'Your track was created!' }
-    #   format.json { render :show, status: :created, location: @song }
-    # else
-    #   format.html { render :new }
-    #   format.json { render json: @song, notice: 'Opps something went arye.' }
-    #   end
-    end
+    respond_to do |format|
+     if @song.save
+       format.html { redirect_to @song, notice: 'Post was successfully created.' }
+       format.json { render :show, status: :created, location: @song }
+     else
+       format.html { render :new }
+       format.json { render json: @song.errors, status: :unprocessable_entity }
+     end
+   end
+ end
+
 
 
  #sends form to edit song (admin only  )

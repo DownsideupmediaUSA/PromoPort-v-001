@@ -71,6 +71,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    dotenv (2.1.1)
     enumerize (2.0.1)
       activesupport (>= 3.2)
     erubis (2.7.0)
@@ -216,6 +217,7 @@ DEPENDENCIES
   cancancan
   coffee-rails (~> 4.2)
   devise
+  dotenv
   enumerize
   jbuilder (~> 2.5)
   jquery-rails

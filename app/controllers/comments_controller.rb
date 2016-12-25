@@ -11,21 +11,22 @@ class CommentsController < ApplicationController
 
 
   def create
-   @comment = @song.comments.create(comment_params)
+   @comment = @song.comments.build(comment_params)
    @comment.user_id = current_user.id
    username = current_user.username
-   @comment.save
+
    if @comment.save
-     redirect_to song_path(@song)
+    #  redirect_to song_path(@song)
+    render 'create.js', :layout => false
    else
-     render 'new'
+     render 'songs/show'
    end
   end
 
 
-  def show
-    @comment = Comment.where(song_id: @song).order("created_at DESC")
-  end
+  # def show
+  #   @comment = Comment.where(song_id: @song).order("created_at DESC")
+  # end
 
 
   private
