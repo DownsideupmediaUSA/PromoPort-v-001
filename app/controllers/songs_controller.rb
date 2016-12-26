@@ -5,7 +5,7 @@ class SongsController < ApplicationController
   #2 after actions to ensure that authorization methods have been called for the current request:
   # after_action :verify_authorized, except: [:index, :show]
   #prior to call, will set all applicapble methods according to this private callback
-  before_action :set_song, only: [:edit, :update, :destroy, :show]
+  before_action :set_song, only: [:edit, :update, :destroy]
 
 
   # displays a list of all instances of a song.
@@ -13,8 +13,10 @@ class SongsController < ApplicationController
 
     if params[:artist_id]
       @songs = Artist.find_by(params[:artist_id]).songs
+      @songs = @user.songs
+
     else
-      @songs = Song.all
+      @songs = user.song.paginate(:page => params[:page])
     end
     # @songs = Song.all
     # @artist = @song.artists
@@ -51,7 +53,7 @@ class SongsController < ApplicationController
     @song.save
     respond_to do |format|
      if @song.save
-       format.html { redirect_to @song, notice: 'Post was successfully created.' }
+       format.html { redirect_to @song, notice: 'Schmoove....Your track was successfully created.' }
        format.json { render :show, status: :created, location: @song }
      else
        format.html { render :new }

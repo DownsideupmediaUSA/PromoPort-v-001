@@ -2,6 +2,7 @@
 <h4>Artist: <%= display_artist(@song)%></h4>
 <h4>Release: <%= display_release(@song) %></h4> <br>
 
+
 <%= link_to "Load Comments", song_comments_path(@song), :class => "load_comments"%>
  <div class="comments">
    <ol>
@@ -24,4 +25,3 @@ Back to <%= link_to "All Tracks", songs_path%>
 <% if can? :create, @song %>
   <%= link_to "Add A New Track", new_song_path(@song) %>
 <% end %>
- 

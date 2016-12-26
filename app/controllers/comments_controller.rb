@@ -24,9 +24,7 @@ class CommentsController < ApplicationController
   end
 
 
-  # def show
-  #   @comment = Comment.where(song_id: @song).order("created_at DESC")
-  # end
+
 
 
   private

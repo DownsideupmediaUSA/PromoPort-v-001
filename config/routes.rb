@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :releases
 
 
+# for dj dashboard song index
+  get '/users/songs' => 'songs#index'
+
 
 
 

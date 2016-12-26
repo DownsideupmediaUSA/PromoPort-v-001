@@ -6,7 +6,16 @@
   <%end%>
 
 
-  <%= link_to "Latest Tracks", songs_path(@song), :class => "load_tracks"%>
+  <% scope = Song.all.page(params[:page]) %>
+  <%= will_paginate @songs %>
+  <%= link_to "Latest_Tracks", users_songs_path(@user), :class => "load_songs"%>
+  <div class="latest_track">
+    <ol>
+      <!-- js response -->
+    </ol>
+  </div>
+
+
    <div class="comments">
      <ol>
        <!-- for js response -->

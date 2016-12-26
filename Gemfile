@@ -45,6 +45,8 @@ gem 'paperclip'
 
 gem 'dotenv'
 
+gem 'will_paginate'
+
 
 
 

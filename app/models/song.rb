@@ -4,6 +4,7 @@ class Song < ApplicationRecord
   has_many :song_releases
   has_many :releases, through: :song_releases
   has_many :comments
+  has_many :users, through: :comments
 
   def releases_attributes=(release_attributes)
     release_attributes.values.each do |release_attribute|
