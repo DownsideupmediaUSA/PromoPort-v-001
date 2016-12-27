@@ -13,10 +13,8 @@ class SongsController < ApplicationController
 
     if params[:artist_id]
       @songs = Artist.find_by(params[:artist_id]).songs
-      @songs = @user.songs
-
     else
-      @songs = user.song.paginate(:page => params[:page])
+      @songs = Song.all
     end
     # @songs = Song.all
     # @artist = @song.artists
@@ -27,7 +25,8 @@ class SongsController < ApplicationController
       if params[:artist_id]
       @artist = Artist.find_by(id: params[:artist_id])
       @song = @artist.songs.find_by(id: params[:id])
-      @release = Release.find_by(params[:release_id])
+      # @release = Release.find_by(params[:release_id])
+
       @comments = @song.comments
       @comment = @song.comments.build
       if @song.nil?
@@ -101,7 +100,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:title ,:genre_id, :artist_id, :release_id, releases_attributes: [:release_name])
+    params.require(:song).permit(:title ,:genre_id, :artist_id, :release_id, :image, releases_attributes: [:release_name])
   end
 
 

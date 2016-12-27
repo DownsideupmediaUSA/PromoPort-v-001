@@ -41,11 +41,11 @@ gem 'cancancan'
 
 gem 'enumerize'
 
-gem 'paperclip'
+gem "paperclip", "~> 5.0.0"
 
 gem 'dotenv'
 
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.1.0'
 
 
 

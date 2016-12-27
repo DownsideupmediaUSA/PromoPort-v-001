@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 
 # for dj dashboard song index
-  get '/users/songs' => 'songs#index'
+
 
 
 

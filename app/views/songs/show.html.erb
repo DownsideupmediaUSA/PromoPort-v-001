@@ -1,6 +1,11 @@
-<ul><h3>Title: <%= @song.title%></h3>
+
+
+<ul><%= image_tag @song.image.url(:thumb)%><br>
+  <h3>Title: <%= @song.title%></h3>
 <h4>Artist: <%= display_artist(@song)%></h4>
-<h4>Release: <%= display_release(@song) %></h4> <br>
+
+
+
 
 
 <%= link_to "Load Comments", song_comments_path(@song), :class => "load_comments"%>
@@ -20,6 +25,8 @@
   <% end %>
 </div>
 </ul>
+
+
 
 Back to <%= link_to "All Tracks", songs_path%>
 <% if can? :create, @song %>
