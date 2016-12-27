@@ -1,0 +1,13 @@
+<h4>Latest Tracks</h5>
+<% javascript_include_tag "pagination"%>
+<%= will_paginate @songs %>
+<!-- <%= link_to "Latest_Tracks", songs_path(@user), :class => "load_songs"%> -->
+<% @songs.each do |song| %>
+<div class="song_wrapper" style="padding: 1rem 0 1rem 0; border-bottom: .5px solid #E9E9E9;">
+  <div class="song" style="font-size: 1.4rem; line-height: 2">
+    <%= image_tag song.image.url(:thumb) %>
+    <h4> <%=link_to song.title, song_path(song)%><br /></h4>
+    <h5> <%=song.artist.artist_name%></h5><br>
+<%end%>
+  </div>
+</div>
