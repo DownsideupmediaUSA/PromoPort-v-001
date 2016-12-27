@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   #   redirect_to root_path
   # end
 
-  
+
 
   def show
-    @songs = Song.paginate(:page => params[:page], :per_page => 3)
+    @songs = Song.paginate(:page => params[:page], :per_page => 1)
   end
 end

@@ -4,11 +4,21 @@
   <% if user_signed_in? %>
     <h4>Hi, <%= current_user.username %>!</h4>
   <%end%>
+  <%= link_to "Edit Account", edit_user_registration_path %><br>
+  <br>
 
-
-  <% scope = Song.all.page(params[:page]) %>
   <%= will_paginate @songs %>
-  <%= link_to "Latest_Tracks", users_songs_path(@user), :class => "load_songs"%>
+  <!-- <%= link_to "Latest_Tracks", songs_path(@user), :class => "load_songs"%> -->
+  <%= @songs.each do |song| %>
+  <div class="song_wrapper" style="padding: 3rem 0 5rem 0; border-bottom: 1px solid #E9E9E9;">
+    <div class="song" style="font-size: 1.4rem; line-height: 2">
+
+      <%=song.title%><br />
+      <%=song.artist.artist_name%>
+<%end%>
+    </div>
+
+  </div>
   <div class="latest_track">
     <ol>
       <!-- js response -->
@@ -22,7 +32,7 @@
      </ol>
   </div>
 
-<%= link_to "Edit Account", edit_user_registration_path %><br>
+
 <br>
 <h4>Your Comments:</h4>
   <ul id="user-comment">
