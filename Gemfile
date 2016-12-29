@@ -47,6 +47,8 @@ gem 'dotenv'
 
 gem 'will_paginate', '~> 3.1.0'
 
+gem 'seed_dump'
+
 
 
 
