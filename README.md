@@ -1,4 +1,4 @@
-Welcome to Promo-Port Distribution
+Welcome to Promo-Port Music Player 
 
 This ruby on rails music player application which allows
 registered users to listen to, comment on and download pre released works from ABC label. This application will feature the following:
@@ -20,9 +20,10 @@ Application will:
 -the use of partials for various forms.
 
 App Installation:
-1. fork git hub repo here:
+1. fork git hub repo here: https://github.com/DownsideupmediaUSA/PromoPort-v-001
 2. run bundle Install
-3. run rails server and go here:
+3. run rake db:seed
+4. run rails server and go here: localhost:3000
 
   1. Create a new user
   2. Search through tracks
