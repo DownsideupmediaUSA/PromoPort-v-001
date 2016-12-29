@@ -7,9 +7,9 @@
   <%= link_to "Edit Account", edit_user_registration_path %><br>
   <br>
 
-  <div class="latest_track">
+  <div id="latest_track">
 
-      <%= render 'latest_songs', song: Song.all %>
+      <%= render 'latest_songs'  %>
 
   </div>
 
