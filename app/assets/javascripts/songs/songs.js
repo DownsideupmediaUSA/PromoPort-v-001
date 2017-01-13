@@ -20,7 +20,7 @@ $(function(){ //anonymous function
   $("#new_comment").on("submit", function(e){
     // 1. we need the URL to submit the POST request too
     // 2. we need the form data.
-  
+
     // Low level
     $.ajax({
       type: ($("input[name='_method']").val() || this.method),

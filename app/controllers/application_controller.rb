@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   include CanCan::ControllerAdditions
+
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  #respond_to :json
   #sets the scope of the new session
   def new_session_path(scope)
     new_user_session_path
@@ -18,10 +19,9 @@ class ApplicationController < ActionController::Base
    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
-  #raises a pundit not authorized error
-  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  private
+
+  # private
 
   # def user_not_authorized(exception)
   #   flash[:error] = "Nice Try Sucka...Access denied!!!"

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   enum role: [:user, :admin]
-  
+
   has_many :comments
   has_many :songs, through: :comments
   # Include default devise modules. Others available are:
@@ -10,6 +10,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
   validates :admin, inclusion: { in: [true, false] }
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -22,9 +23,9 @@ class User < ApplicationRecord
 
 
 
-  def self.username
-    username = @user.name
-  end
+  # def self.username
+  #   username = @user.name
+  # end
 
 
 

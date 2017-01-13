@@ -1,18 +1,8 @@
 
-
-<ul><%= image_tag @song.image.url(:thumb)%><br>
-  <h3>Title: <%= @song.title%></h3>
-<h4>Artist: <%= display_artist(@song)%></h4>
-
-
-
-
-
-<%= link_to "Load Comments", song_comments_path(@song), :class => "load_comments"%>
- <div class="comments">
-   <ol>
-     <!-- for js response -->
-   </ol>
+<div>
+  <%= image_tag @song.image.url(:thumb)%><br>
+    <h3>Title: <%= @song.title%></h3>
+  <h4>Artist: <%= display_artist(@song)%></h4>
 </div>
 
 <div class="new_comment">
@@ -24,11 +14,49 @@
     </p>
   <% end %>
 </div>
-</ul>
+
+<div>
+  <p>
+  <h4><%= @song.comments.count%> Comments</h4>  
+  </p>
+</div><br>
+<button id="show_comments">Show Comments</button>
+
+<div id="comments_collection" style="display: none;">
+<h4>All comments:</h4>
+</div>
 
 
 
+<br><br>
 Back to <%= link_to "All Tracks", songs_path%>
-<% if can? :create, @song %>
-  <%= link_to "Add A New Track", new_song_path(@song) %>
-<% end %>
+
+
+
+<!--Get Comments  -->
+
+
+
+<!--  Post Comments -->
+<!-- <script type="text/javascript">
+
+$("#new_comment").on("click", function(e){
+
+  // Low level
+  $.ajax({
+    type: ($("input[name='_method']").val() || this.method),
+    url: this.action,
+    data: $(this).serialize(),
+    success: function(response){
+      $("#comment_content").val("");
+      var $ol = $("div.comments ol")
+      $ol.append(response);
+    }
+  });
+  e.preventDefault();
+
+  // Send a POST request to the correct place that form would've gone too anyway
+  // along with the actual form data.
+
+});
+</script> -->

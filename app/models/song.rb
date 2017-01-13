@@ -14,6 +14,9 @@ class Song < ApplicationRecord
     end
   end
 
-
+  def total_comments
+    @song = Song.find(params[:id])
+    @total_comments = @song.comments.count
+  end
 
 end
