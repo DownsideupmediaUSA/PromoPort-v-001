@@ -12,7 +12,7 @@
   <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "Genre:" %><br>
   Select a
 
-  <%= f.collection_select :release_id, Release.all, :id, :release_name, :prompt => "Release:" %><br>
+  <%= f.collection_select :release_ids, Release.all, :id, :release_name, :prompt => "Release:", :include_blank => "New Release" %><br>
   <%= f.fields_for :releases, song.releases.build do |release_fields| %>
     <%=release_fields.label "...or create a new release"%>
     <%= release_fields.text_field :release_name %>

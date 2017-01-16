@@ -1,5 +1,9 @@
 class ReleasesController < ApplicationController
 
+  def index
+    @releases = Release.all
+  end
+
   def show
     @release = Release.find_by(params[:release_id])
   end

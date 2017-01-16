@@ -46,19 +46,20 @@ class SongsController < ApplicationController
 # creates new instance of song with info provided from above form
 # redirects user to list of all songs via index path.
   def create
-    @release = Release.find_or_create_by(params[:release_id])
-    @artist = Artist.find_by(params[:artist_id])
-    @song = Song.new(song_params)
-    @song.save
-    respond_to do |format|
-     if @song.save
-       format.html { redirect_to @song, notice: 'Schmoove....Your track was successfully created.' }
-       format.json { render :show, status: :created, location: @song }
-     else
-       format.html { render :new }
-       format.json { render json: @song.errors, status: :unprocessable_entity }
-     end
-   end
+    # @release = Release.find_or_create_by(params[:release_id])
+    # @artist = Artist.find_by(params[:artist_id])
+    # @song = Song.new(song_params)
+    raise params.inspect
+  #   @song.save
+  #   respond_to do |format|
+  #    if @song.save
+  #      format.html { redirect_to @song, notice: 'Schmoove....Your track was successfully created.' }
+  #      format.json { render :show, status: :created, location: @song }
+  #    else
+  #      format.html { render :new }
+  #      format.json { render json: @song.errors, status: :unprocessable_entity }
+  #    end
+  #  end
  end
 
 
@@ -100,7 +101,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:title ,:genre_id, :artist_id, :release_id, :image, releases_attributes: [:release_name])
+    params.require(:song).permit(:title ,:genre_id, :artist_id, :image, release_ids: [], release_attributes: [:release_name])
   end
 
 

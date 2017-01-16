@@ -15,11 +15,8 @@
   <% end %>
 </div>
 
-<div>
-  <p>
-  <h4><%= @song.comments.count%> Comments</h4>  
-  </p>
-</div><br>
+<h4><%= @song.comments.count%> Comments</h4>
+<br>
 <button id="show_comments">Show Comments</button>
 
 <div id="comments_collection" style="display: none;">
