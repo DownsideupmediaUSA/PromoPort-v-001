@@ -5,23 +5,33 @@
   <h4>Artist: <%= display_artist(@song)%></h4>
 </div>
 
-<div class="new_comment">
-  <h4>Add a Comment:</h4>
-  <%= form_for([@song, @song.comments.build]) do |f|  %>
-    <p>
-      <%= f.text_field :content %>
-      <%= f.submit %>
-    </p>
-  <% end %>
-</div>
 
-<h4><%= @song.comments.count%> Comments</h4>
-<br>
+
 <button id="show_comments">Show Comments</button>
-
+<section id="comments-section">
 <div id="comments_collection" style="display: none;">
-<h4>All comments:</h4>
+  <br>
+  <h6><%= @song.comments.count%> Comments</h6>
+
+  <h4>All comments:</h4>
+  
+  <div class="comments">
+      <%= render 'comments/comments'%>
+  </div>
+
+
+  <div class="new_comment">
+    <h4>Add a Comment:</h4>
+    <%= form_for([@song, @song.comments.build]) do |f|  %>
+      <p>
+        <%= f.text_field :content %>
+        <%= f.submit %>
+      </p>
+    <% end %>
+  </div>
 </div>
+</section>
+
 
 
 
@@ -31,6 +41,7 @@ Back to <%= link_to "All Tracks", songs_path%>
 
 
 <!--Get Comments  -->
+
 
 
 

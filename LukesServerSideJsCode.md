@@ -4,7 +4,7 @@
     $('#show_comments').on('click', () => {
       var commentsElement = $('#comments_collection')
       if (commentsElement.css('display') === 'none') {
-        fetch("/songs/" + <%= @song.id %> + "/comments.json", {
+        <!-- fetch("/songs/" + <%= @song.id %> + "/comments.json", { -->
           method: 'GET',
           credentials: 'include'
         })

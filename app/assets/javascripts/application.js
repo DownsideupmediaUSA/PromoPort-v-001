@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require_tree
 //= require ./songs/songs
-//= require ./users/users
+//= require ./songs/new_comment

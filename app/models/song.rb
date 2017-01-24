@@ -9,8 +9,8 @@ class Song < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def releases_attributes=(release_attributes)
-    release_attributes.values.each do |release_attribute|
-      release = Release.find_or_create_by(release_attribute)
+    release_attributes.values.each do |i, release_attributes|
+      release = Release.find_or_create_by(release_attributes)
       self.releases.build(release_attributes)
     end
   end

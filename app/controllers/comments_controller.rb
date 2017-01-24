@@ -1,33 +1,28 @@
 class CommentsController < ApplicationController
-  before_action :find_song
+  before_action :find_song, only: [:show]
 
   def index
     @comments = @song.comments
-# <<<<<<< Updated upstream
-#     respond_to do |format|
-#       format.html {render 'index.html', :layout => false}
-#       format.js {render 'index.js', :layout => false}
-#     end
-# =======
-    render 'comments/index', :layout => false
-    # respond_to do |format|
-    # format.html
-    # format.json { render json: @comments.as_json(include: [:user]) }
-    # format.json { render json: @comments }
-    # end
-# >>>>>>> Stashed changes
+    respond_to do |format|
+      format.html
+      format.js { render @comments }
+    end
   end
 
+  def api_index
+   @comments = Comment.all
+   render json: @songs
+  end
 
   def create
    @comment = @song.comments.build(comment_params)
    @comment.user_id = current_user.id
    username = current_user.username
    if @comment.save
-    #  redirect_to song_path(@song)
-    render json: @comment
+  #  render 'create.js', :layout => false
+     render 'songs/show', :layout => false
    else
-    render 'songs/show'
+     render 'songs/show'
    end
   end
 
@@ -35,7 +30,7 @@ class CommentsController < ApplicationController
     @comment = @song.comments.find(params[:id])
   end
 
-  
+
 
 
 
