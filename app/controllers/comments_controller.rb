@@ -2,11 +2,11 @@ class CommentsController < ApplicationController
   before_action :find_song, only: [:show]
 
   def index
-    @comments = @song.comments
-    respond_to do |format|
-      format.html
-      format.js { render @comments }
-    end
+    # @comments = @song.comments
+    # respond_to do |format|
+    #   format.html
+    #   format.js { render @comments }
+    # end
   end
 
   def api_index

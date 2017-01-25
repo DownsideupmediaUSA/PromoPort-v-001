@@ -5,13 +5,42 @@ $(function(){ //anonymous function
          e.preventDefault();
         $('#comments_collection').fadeToggle()
          $('#comment_content').focus()
+          $.get('/api/songs', function(data) {
+             data.forEach(function(song){
+               var newSong = new Song(song.id, song.comments)
 
-        var url = this.action
-        $.ajax({
-          method: "GET",
-          url: url,
-        })
-       })
+              })
+           })
+         })
+
+
+           function Song(id, comments) {
+             this.id = id
+             this.comments = comments
+             console.log(id, comments)
+           }
+        // function comment(id, contents) {
+        //   this.id = id
+        //   this.content = content
+        // }
+        //
+          Song.prototype.appendToElement = function(element) {
+          // var commentHtml = ''
+          // commentHtml += '<h5>' + this.comment + '</h5>'
+          // return commentHtml
+          var songString = `
+
+              <ul>
+            <li>
+               <em> ${this.user.username} said:</em>
+               ${this.content}
+            </li>
+            </ul>
+          `;
+          element.append(songString);
+        }
+
+
 
 //////// submitting a comment/////////////
 
