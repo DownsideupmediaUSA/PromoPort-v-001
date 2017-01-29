@@ -1,0 +1,80 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// body {
+//   text-align: center;
+//   display: block;
+//   margin: 8px;
+// }
+//
+#songs_collection {
+  display: none;
+  -moz-column-count: 3;
+  -moz-column-gap: undefinedpx;
+  -webkit-column-count: 3;
+  -webkit-column-gap: undefinedpx;
+  column-count: 3;
+  column-gap: undefinedpx;
+}
+
+*{
+padding : 0;
+margin : 0;
+border : 0;
+}
+// body{
+// background-image : url(' bi-background-light-blue.png ');
+// background-attachment : fixed;
+// background-size : 100% auto;
+// }
+.blended_grid{
+display : block;
+width : 1050px;
+overflow : auto;
+margin : 0 auto 0 auto;
+}
+
+.navBanner{
+background-color : rgba(255,255,255, 0.5);
+float : left;
+clear : none;
+height : 50px;
+width : 1050px;
+}
+.profileBanner{
+background-color : rgba(255,255,255, 0.5);
+float : left;
+clear : none;
+height : 350px;
+width : 350px;
+}
+.featuredBanner{
+background-color : rgba(255,255,255, 0.5);
+float : left;
+clear : none;
+height : 350px;
+width : 350px;
+}
+.commentsBanner{
+background-color : rgba(255,255,255, 0.5);
+float : left;
+clear : none;
+height : 350px;
+width : 350px;
+overflow: scroll;
+}
+.css3button{
+background-color : rgba(255,255,255, 0.5);
+float : left;
+clear : none;
+height : 350px;
+width : 1050px;
+}
+.footer-banner{
+background-color : rgba(255,255,255, 0.5);
+float : left;
+clear : none;
+height : 50px;
+width : 1050px;
+}

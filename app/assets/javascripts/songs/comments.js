@@ -1,37 +1,50 @@
 $(function(){ //anonymous function
 /////////////COMMENTS SECTION//////////
 
-      $("#all_tracks").on("click", function(e){
+      $("#show_comments").on("click", function(e){
          e.preventDefault();
-        $('#songs_collection').fadeToggle()
-         $('#song_content').focus()
+        $('#comments_collection').fadeToggle()
+         $('#comment_content').focus()
           $.get('/api/songs', function(data) {
-            $("#songs_collection").html('')
              data.forEach(function(song){
-               var newSong = new Song(song.id, song.title, song.artist)
+               var newSong = new Song(song.id, song.comments)
                var formattedSong = newSong.formatSong()
-                console.log(formattedSong)
-                $("#songs_collection").append(formattedSong)
-             })
+               $("#comment_content").val("");
+               var $ol = $("div.comments ol")
+               $ol.append(response);
+              })
            })
          })
 
 
-
-           function Song(id, title, artist) {
+           function Song(id, comments) {
              this.id = id
-             this.title = title
-             this.artist = artist
+             this.comments = comments
+            //  console.log(id, comments)
            }
-
+        // function comment(id, contents) {
+        //   this.id = id
+        //   this.content = content
+        // }
+        //
           Song.prototype.formatSong = function() {
           var songHtml = ''
-          songHtml += '<h4>' + this.title + '</h4>'+ "by:"
-          songHtml += '<h7>' + this.artist.artist_name  + '</h7>'
-
+          songHtml += '<h5>' + this.user.username + 'said:' + '</h5>'
+          songHtml += '<h5>' + this.comment.content +  '</h5>'
           return songHtml
+          console.log(songHtml)
 
-          }
+          // var songString = `
+          //
+          //     <ul>
+          //   <li>
+          //      <em> ${this.user.username} said:</em>
+          //      ${this.content}
+          //   </li>
+          //   </ul>
+          // `;
+          // element.append(songString);
+        }
 
 
 

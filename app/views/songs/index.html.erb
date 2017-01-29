@@ -1,10 +1,18 @@
-<ul>
-  <h5>All Tracks</h5>
-
-
-  <ul>
-  <% @songs.each do |song| %>
-    <li><%= link_to song.title, song_path(song) %> by <%= display_artist(song) %> </li>
-  <% end %>
+<div class="col-left-sml">
+ <ul>
+  <button class="css3button" id="all_tracks">All Tracks</button>
+   <section id="songs-section">
+     <div id="songs_collection" style="display: none;">
+       <br>
+       <div class="songs_index">
+       </div>
+     </div>
+   </section>
   </ul>
-</ul>
+</div><!--col-left-sml-->
+
+  <!-- <ul>
+  <!- <% @songs.each do |song| %>
+    <li><%= link_to song.title, song_path(song) %> by <%= display_artist(song) %> </li>
+  <% end %> -->
+  <!-- </ul> -->

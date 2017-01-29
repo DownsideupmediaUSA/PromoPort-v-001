@@ -1,32 +1,62 @@
-<ul>
-<h5>DJ Dashboard</h5>
+<div class="blended_grid">
+<!-- <div class="col-left-sml"> -->
 
-  <% if user_signed_in? %>
-    <h4>Hi, <%= current_user.username %>!</h4>
-  <%end%>
-  <%= link_to "Edit Account", edit_user_registration_path %><br>
-  <br>
+<div class="middleBanner">
 
-  <div id="latest_track">
 
-      <%= render 'latest_songs'  %>
+</div>
+  <div class="profileBanner">
+    <h5>DJ Dashboard</h5>
+    <%= link_to "Edit Account", edit_user_registration_path %><br>
+    <div class="welcome-content">
+      Welcome to your dashboard! Select from latest tracks or to see a full list of all tracks.<br>
 
+    </div>
   </div>
 
+    <!-- <div class="leftBanner">
+  <h5>DJ Dashboard</h5>
+   <div id="welcome_user" \>
+     <% if user_signed_in? %>
+       <h4>Hi, <%= current_user.username %>!</h4>
+     <%end%>
+    <%= link_to "Edit Account", edit_user_registration_path %><br>
+   </div>
+  </div> -->
+  <!-- </div> col-left-sml" -->
+ <br>
+    <div id="latest_track" class="featuredBanner">
+        <%= render 'latest_songs'  %>
+    </div>
 
 
-   <div class="comments">
-     <ol>
-       <!-- for js response -->
-     </ol>
-  </div>
 
 
-<br>
-<h4>Your Comments:</h4>
-  <ul id="user-comment">
-    <% current_user.comments.each do |c| %>
-      <li>Track Title: "<%= c.song.title %>" oh snap..you said: "<%= c.content %>"</li>
-    <% end %>
-  </ul>
-</ul>
+
+
+
+
+    <div class="commentsBanner">
+      <h4>Your Comments:</h4>
+        <ul id="user-comment">
+          <% current_user.comments.each do |c| %>
+            <li>Track Title: "<%= c.song.title %>" oh snap..you said: "<%= c.content %>"</li>
+          <% end %>
+        </ul>
+      </ul>
+      </div>
+
+      <!-- <a href="#" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-fire"></span> All Tracks</a> -->
+
+      <button class="btn btn-xs btn-primary" id="all_tracks"><span class="glyphicon glyphicon-fire"></span>All Tracks</button>
+       <section id="songs-section">
+         <div id="songs_collection" style="display: none;">
+           <br>
+           <div class="songs_index">
+           </div>
+         </div>
+       </section>
+
+
+
+<!-- </section> page content closer-->

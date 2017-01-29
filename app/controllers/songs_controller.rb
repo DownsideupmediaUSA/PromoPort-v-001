@@ -5,7 +5,7 @@ class SongsController < ApplicationController
   #2 after actions to ensure that authorization methods have been called for the current request:
   # after_action :verify_authorized, except: [:index, :show]
   #prior to call, will set all applicapble methods according to this private callback
-  before_action :set_song, only: [:edit, :update, :destroy]
+  before_action :set_song, only: [:edit, :update, :destroy, :api_show]
 
 
   # displays a list of all instances of a song.
@@ -18,8 +18,12 @@ class SongsController < ApplicationController
   end
 
   def api_index
-   @songs = Song.all
-   render json: @songs
+    @songs = Song.all
+    render json: @songs
+  end
+
+  def api_show
+    render json: @song
   end
 
 
