@@ -8,9 +8,8 @@ $(function(){ //anonymous function
           $.get('/api/songs', function(data) {
             $("#songs_collection").html('')
              data.forEach(function(song){
-               var newSong = new Song(song.id, song.title, song.artist)
-               var formattedSong = newSong.formatSong()
-                console.log(formattedSong)
+               var newSong = new Song(song.id, song.title, song.artist, song.comments)
+               var formattedSong = newSong.formatSongsIndex()
                 $("#songs_collection").append(formattedSong)
              })
            })
@@ -18,19 +17,19 @@ $(function(){ //anonymous function
 
 
 
-           function Song(id, title, artist) {
+           function Song(id, title, artist, comments) {
              this.id = id
              this.title = title
              this.artist = artist
+             this.comments = comments
            }
 
-          Song.prototype.formatSong = function() {
+          Song.prototype.formatSongsIndex = function() {
           var songHtml = ''
-          songHtml += '<h4>' + this.title + '</h4>'+ "by:"
-          songHtml += '<h7>' + this.artist.artist_name  + '</h7>'
-
+          songHtml += `<a href="#" class="song-title" data-id=${this.id}><h4>${this.title}</h4></a> by:`
+          songHtml += `<a href="#" class="song-artist-name" data-id=${this.id}><h7>${this.artist.artist_name}</h7> </a><br>`
+          songHtml += `number of comments: ${this.comments.length}`
           return songHtml
-
           }
 
 
