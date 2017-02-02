@@ -21,7 +21,7 @@ $(function() {
          $(document).on('click', '.song-title', function(e) {
            e.preventDefault()
            const id = $(this).data('id')
-          //  debugger
+           debugger
            fetch(`/api/songs/${id}`)
              .then(response => response.json())
              .then(song => {
