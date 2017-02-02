@@ -14,7 +14,7 @@
   <h6><%= @song.comments.count%> Comments</h6>
 
   <h4>All comments:</h4>
-  
+
   <div class="comments">
       <%= render 'comments/comments'%>
   </div>
@@ -33,38 +33,5 @@
 </section>
 
 
-
-
 <br><br>
 Back to <%= link_to "All Tracks", songs_path%>
-
-
-
-<!--Get Comments  -->
-
-
-
-
-<!--  Post Comments -->
-<!-- <script type="text/javascript">
-
-$("#new_comment").on("click", function(e){
-
-  // Low level
-  $.ajax({
-    type: ($("input[name='_method']").val() || this.method),
-    url: this.action,
-    data: $(this).serialize(),
-    success: function(response){
-      $("#comment_content").val("");
-      var $ol = $("div.comments ol")
-      $ol.append(response);
-    }
-  });
-  e.preventDefault();
-
-  // Send a POST request to the correct place that form would've gone too anyway
-  // along with the actual form data.
-
-});
-</script> -->

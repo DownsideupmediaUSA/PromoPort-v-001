@@ -1,6 +1,9 @@
-$(function(){ //anonymous function
+$(function() {
+ bindClick()
+})
+   //anonymous function
 /////////////COMMENTS SECTION//////////
-
+     function bindClick() {
       $("#all_tracks").on("click", function(e){
          e.preventDefault();
         $('#songs_collection').fadeToggle()
@@ -15,6 +18,21 @@ $(function(){ //anonymous function
            })
          })
 
+         $(document).on('click', '.song-title', function(e) {
+           e.preventDefault()
+           const id = $(this).data('id')
+          //  debugger
+           fetch(`/api/songs/${id}`)
+             .then(response => response.json())
+             .then(song => {
+             $('#trackBanner').html('')
+             const newSong = new Song(song.id, song.title, song.artist, song.comments)
+             const formattedSong = newSong.formatSongShow()
+             $('#trackBanner').append(formattedSong)
+            })
+          history.pushState(null, null, `/songs/${id}`)
+         })
+        }
 
 
            function Song(id, title, artist, comments) {
@@ -25,42 +43,21 @@ $(function(){ //anonymous function
            }
 
           Song.prototype.formatSongsIndex = function() {
-          var songHtml = ''
-          songHtml += `<a href="#" class="song-title" data-id=${this.id}><h4>${this.title}</h4></a> by:`
-          songHtml += `<a href="#" class="song-artist-name" data-id=${this.id}><h7>${this.artist.artist_name}</h7> </a><br>`
-          songHtml += `number of comments: ${this.comments.length}`
-          return songHtml
+            var songHtml = ''
+            songHtml += `<a href="#" class="song-title" data-id=${this.id}><h4>${this.title}</h4></a> by: `
+            songHtml += `<a href="#" class="song-artist-name" data-id=${this.id}><h7>${this.artist.artist_name}</h7> </a><br>`
+            songHtml += `number of comments: ${this.comments.length}`
+            return songHtml
           }
 
+          Song.prototype.formatSongShow = function() {
+            var songHtml = `
+                            <h4>${this.title}</h4>
+                            <h6>${this.artist.artist_name}</h6>
+                           `
+            console.log(songHtml)
+            return songHtml
 
 
-//////// submitting a comment/////////////
-
-
-
-
-  // $("#new_comment").on("submit", function(e){
-  //   // 1. we need the URL to submit the POST request too
-  //   // 2. we need the form data.
-  //
-  //   // Low level
-  //   $.ajax({
-  //     type: ($("input[name='_method']").val() || this.method),
-  //     url: this.action,
-  //     data: $(this).serialize(),
-  //     success: function(response){
-  //       $("#comment_content").val("");
-  //       var $ol = $("div.comments ol")
-  //       $ol.append(response);
-  //     }
-  //   });
-  //
-  //   // Send a POST request to the correct place that form would've gone too anyway
-  //   // along with the actual form data.
-  //   e.preventDefault();
-  // })
-
-
-
-
-});
+          }
+// });
