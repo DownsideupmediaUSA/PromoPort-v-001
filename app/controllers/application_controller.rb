@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   include CanCan::ControllerAdditions
 
   protect_from_forgery with: :exception
-  before_filter :authenticate_user!
-  before_action :configure_permitted_parameters, if: :devise_controller?
-  #respond_to :json
+  # before_filter :authenticate_user!
+  # before_action :configure_permitted_parameters, if: :devise_controller?
+
   #sets the scope of the new session
   def new_session_path(scope)
     new_user_session_path

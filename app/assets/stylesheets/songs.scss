@@ -2,11 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// body {
-//   text-align: center;
-//   display: block;
-//   margin: 8px;
-// }
+
 //
 #songs_collection {
   display: none;
@@ -18,16 +14,17 @@
   column-gap: undefinedpx;
 }
 
-*{
-padding : 0;
-margin : 0;
-border : 0;
-}
+// *{
+// background-color: #FFFFFF;
+//
+// }
 // body{
 // background-image : url(' bi-background-light-blue.png ');
 // background-attachment : fixed;
 // background-size : 100% auto;
 // }
+
+
 .blended_grid{
 width : 1050px;
 overflow : auto;
@@ -35,14 +32,14 @@ margin : 0 auto 0 auto;
 }
 
 .navBanner{
-background-color : rgba(255,255,255, 0.5);
+background-color: #FFFFFF;
 float : left;
 clear : none;
 height : 50px;
-width : 1050px;
+width : 1080px;
 }
 .profileBanner{
-background-color : rgba(255,255,255, 0.5);
+background-color :  #FFFFFF;
 float : left;
 clear : none;
 height : 350px;
@@ -71,7 +68,7 @@ height : 350px;
 width : 1050px;
 }
 .footer-banner{
-background-color : rgba(255,255,255, 0.5);
+background-color :  #FFFFFF;
 float : left;
 clear : none;
 height : 50px;

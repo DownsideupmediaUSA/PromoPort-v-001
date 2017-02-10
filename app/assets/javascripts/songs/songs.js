@@ -21,7 +21,6 @@ $(function() {
          $(document).on('click', '.song-title', function(e) {
            e.preventDefault()
            const id = $(this).data('id')
-           debugger
            fetch(`/api/songs/${id}`)
              .then(response => response.json())
              .then(song => {
@@ -55,7 +54,6 @@ $(function() {
                             <h4>${this.title}</h4>
                             <h6>${this.artist.artist_name}</h6>
                            `
-            console.log(songHtml)
             return songHtml
 
 

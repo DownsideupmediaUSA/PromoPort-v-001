@@ -10,7 +10,7 @@
   <% end %>
 
 
-<%= form_for @song, html: { multipart: true } do|f| %>
+<%= form_for song, html: { multipart: true } do|f| %>
   <div class="field"> <%= f.label :image %>:
   <%= f.file_field :image %></div>
   <div class="field"> <%= f.label :title %>:
@@ -20,14 +20,12 @@
   <%= f.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "Artist:" %> <br>
   Select a
   <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "Genre:" %><br>
-  Select a
+
 
   <%= f.collection_select :release_ids, Release.all, :id, :release_name, :prompt => "Release:", :include_blank => "New Release" %><br>
   <%= f.fields_for :releases, song.releases.build do |release_fields| %>
-    <%=release_fields.label "...or create a new release"%>
+    <%=release_fields.label "...create a new release"%>
     <%= release_fields.text_field :release_name %>
   <%end%>
-  <div class="actions">
     <%= f.submit "Create" %>
-  </div>
   <%end%>

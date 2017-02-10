@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161227024230) do
+ActiveRecord::Schema.define(version: 20170209230608) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "artist_name"
@@ -53,11 +53,9 @@ ActiveRecord::Schema.define(version: 20161227024230) do
 
   create_table "song_releases", force: :cascade do |t|
     t.integer  "song_id"
-    t.integer  "artist_id"
     t.integer  "release_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_song_releases_on_artist_id"
     t.index ["release_id"], name: "index_song_releases_on_release_id"
     t.index ["song_id"], name: "index_song_releases_on_song_id"
   end
@@ -66,7 +64,6 @@ ActiveRecord::Schema.define(version: 20161227024230) do
     t.string   "title"
     t.integer  "artist_id"
     t.integer  "genre_id"
-    t.integer  "release_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
