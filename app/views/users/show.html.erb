@@ -10,21 +10,11 @@
     <%= link_to "Edit Account", edit_user_registration_path %><br>
 
       Welcome to your dashboard! Select from latest tracks or click on the button below to see a full list of all tracks.<br>
-
-
   </div>
 
-    <!-- <div class="leftBanner">
-  <h5>DJ Dashboard</h5>
-   <div id="welcome_user" \>
-     <% if user_signed_in? %>
-       <h4>Hi, <%= current_user.username %>!</h4>
-     <%end%>
-    <%= link_to "Edit Account", edit_user_registration_path %><br>
-   </div>
-  </div> -->
+  
   <!-- </div> col-left-sml" -->
- <br>
+
     <div id="latest_track" class="featuredBanner">
         <%= render 'latest_songs'  %>
     </div>
