@@ -6,12 +6,12 @@
 //
 #songs_collection {
   display: none;
-  -moz-column-count: 3;
-  -moz-column-gap: undefinedpx;
+  -moz-column-count:3;
+  -moz-column-gap: 0;
   -webkit-column-count: 3;
-  -webkit-column-gap: undefinedpx;
+  -webkit-column-gap: 0;
   column-count: 3;
-  column-gap: undefinedpx;
+  column-gap: 0;
 }
 
 // *{
@@ -50,14 +50,14 @@ background-color : rgba(255,255,255, 0.5);
 float : left;
 clear : none;
 height : 350px;
-width : 350px;
+width : 0px;
 }
 .trackBanner{
 background-color : rgba(255,255,255, 0.5);
 float : left;
 clear : none;
 height : 350px;
-width : 350px;
+width : 700px;
 overflow: scroll;
 }
 .css3button{
@@ -68,6 +68,7 @@ height : 350px;
 width : 1050px;
 }
 .footer-banner{
+position: fixed;
 background-color :  #FFFFFF;
 float : left;
 clear : none;

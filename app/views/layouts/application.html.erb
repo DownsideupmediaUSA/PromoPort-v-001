@@ -2,13 +2,18 @@
 <html>
 <head>
  <meta http-equiv="content-type" content="text/html; charset=utf-8">
- <link rel="stylesheet" type="text/css" >
+
   <title> PROMO-PORT</title>
-   <%= stylesheet_link_tag  'application', media: 'all' %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="js/mediaelement-and-player.min.js"></script>
+  <link rel= "stylesheet" href="build/mediamelementplayer.min.scss"/>
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <%= stylesheet_link_tag  'application', media: 'all' %>
 <!-- <script src="/js/bootstrap.min.js" type="text/javascript"></script> -->
-   <%= javascript_include_tag 'application' %>
-   <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
    <!-- <%= javascript_include_tag :songs %> -->
+
 </head>
 
 
@@ -17,11 +22,7 @@
 
       <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
           <div class="navBanner">
-
-
-
-
-              <div class="navbar-header page-scroll">
+            <div class="navbar-header page-scroll">
                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                <span class="sr-only">Toggle navigation</span>
                                Menu <i class="fa fa-bars"></i>
@@ -36,9 +37,8 @@
               <% if user_signed_in? %>
                   Logged in as <strong><%= current_user.username %></strong>.
                   <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %><br>
-                  <%= link_to 'DJ Dashboard', root_path%>
-                  <!-- <%= link_to "All Tracks", songs_path%> |
-                  <%= link_to "All Artists", artists_path%> -->
+                  <%= link_to 'DJ Dashboard', root_path%> |
+                   <!-- <%= link_to "All Artists", artists_path%> -->
               <% else %>
                   <%= link_to "Sign up", new_user_registration_path %> |
                   <%= link_to "Sign in", new_user_session_path %>
@@ -52,7 +52,8 @@
           </ul>
 
       </nav><!--nav-banner-->
-<!-- </div>blended_grid-->
+     </div>
+
 
 
       <!-- Set your background image for this header on the line below. -->
@@ -67,50 +68,24 @@
 <!-- content -->
 <!-- Footer -->
 <div id="app-container" class="container">
-  <%= yield %>
+  <!-- <div class="audio-player">
+    <audio  id="audio-player" src="bdc-Trepidation-Original.mp3" type="audio/mp3" controls="controls"></audio>
+  </div> -->
+    <%= yield %>
 </div><!--app-contaner-close-->
 
 
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <hr>
-
+  <br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- <audio id="trepidation" width="1050" height="32" ontimeupdate="updateTime()"><source src="path/to/music.mp3" type="audio/mp3" /></audio> -->
+  </body>
     <footer>
       <div class="footer-banner">
           <div class="row">
-              <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                  <ul class="list-inline text-center">
-                      <li>
-                          <a href="#">
-                              <span class="fa-stack fa-lg">
-                                  <i class="fa fa-circle fa-stack-2x"></i>
-                                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                              </span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="#">
-                              <span class="fa-stack fa-lg">
-                                  <i class="fa fa-circle fa-stack-2x"></i>
-                                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                              </span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="#">
-                              <span class="fa-stack fa-lg">
-                                  <i class="fa fa-circle fa-stack-2x"></i>
-                                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                              </span>
-                          </a>
-                      </li>
-                  </ul>
-                  <p class="copyright text-muted">Copyright &copy;2016/2017 Downside Up Recordings/PROMO-PORT </p>
-              </div>
+            <p class="copyright text-muted">Copyright &copy;2016/2017 Downside Up Recordings/PROMO-PORT </p>
           </div>
       </div>
   </footer>
-  </div><!--blended_grid-->
 
   <!-- jQuery -->
   <!-- <script src="vendor/jquery/jquery.min.js"></script>
@@ -130,6 +105,8 @@
   <!-- Theme JavaScript -->
   <!-- <script src="js/clean-blog.min.js"></script> -->
 
-</body>
+
+
+
 
 </html>

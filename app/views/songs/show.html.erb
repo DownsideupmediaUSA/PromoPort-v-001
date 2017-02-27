@@ -16,7 +16,7 @@
   <h4>All comments:</h4>
 
   <div class="comments">
-      <%= render 'comments/comments'%>
+      <!-- <%= render 'comments/comments'%> -->
   </div>
 
 
@@ -28,6 +28,9 @@
         <%= f.submit %>
       </p>
     <% end %>
+    <%= button_tag 'Previous',  class: 'js-prev', data: {id: @song.id}%>
+    <%= button_tag 'Next',  class: 'js-next', data: {id: @song.id}%>
+
   </div>
 </div>
 </section>

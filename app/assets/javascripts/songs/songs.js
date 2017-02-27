@@ -7,7 +7,7 @@ $(function() {
       $("#all_tracks").on("click", function(e){
          e.preventDefault();
         $('#songs_collection').fadeToggle()
-         $('#song_content').focus()
+
           $.get('/api/songs', function(data) {
             $("#songs_collection").html('')
              data.forEach(function(song){
@@ -25,7 +25,8 @@ $(function() {
               .then(response => response.json())
               .then(song => {
                 $('.trackBanner').html('')
-                const newSong = new Song(song.id, song.title, song.artist, song.comments, song.user)
+
+                const newSong = new Song(song.id, song.title, song.artist, song.comments, song.user, song.image)
                 const formattedSong = newSong.formatSongShow()
                 $('.trackBanner').append(formattedSong)
             })
@@ -34,8 +35,9 @@ $(function() {
         }
 
 
-           function Song(id, title, artist, comments) {
+           function Song(id, title, artist, comments, image) {
              this.id = id
+             this.image = image
              this.title = title
              this.artist = artist
              this.comments = comments
@@ -43,26 +45,26 @@ $(function() {
 
           Song.prototype.formatSongsIndex = function() {
             var songHtml = ''
-            songHtml += `<a href="#" class="song-title" data-id=${this.id}><h4>${this.title}</h4></a> by: `
+            songHtml += `<a href="/songs/${this.id}" class="song-title" data-id=${this.id}><h4>${this.title}</h4></a> by: `
             songHtml += `<h7>${this.artist.artist_name}</h7> <br>`
             songHtml += `number of comments: ${this.comments.length}`
             return songHtml
           }
 
           Song.prototype.formatSongShow = function() {
-            const comments = this.comments.map(comments => `<li>${comments.user.username} said: ${comments.content} </li>`)
+            const comments = this.comments.map(comments => `<li>${comments.user.username} said: ${comments.content} </li>`).join('')
 
             var songHtml = `
-                            <h4>${this.title}</h4>
+                            <a href="#" class="song-title" data-id=${this.id}><h4>${this.title}</h4></a>
                             <h6>${this.artist.artist_name}</h6>
                             <h6># of comments: ${this.comments.length}</h6>
                             <h6>Comments:</h6>
-                            <ol>
+                            <ul>
                             ${comments}
-                            </ol>
+                            </ul>
+                            <ba
                            `
+
             return songHtml
-
-
           }
 // });

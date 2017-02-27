@@ -2,6 +2,7 @@ $(function(){ //anonymous function
 /////////////COMMENTS SECTION//////////
 
       $("#show_comments").on("click", function(e){
+
          e.preventDefault();
         $('#comments_collection').fadeToggle()
          $('#comment_content').focus()
@@ -9,9 +10,10 @@ $(function(){ //anonymous function
              data.forEach(function(song){
                var newSong = new Song(song.id, song.comments)
                var formattedSong = newSong.formatSong()
-               $("#comment_content").val("");
-               var $ol = $("div.comments ol")
-               $ol.append(response);
+              $("#comments").append(formattedSong);
+              //  $("#comment_content").val("");
+              //  var $ol = $("div.comments ol")
+
               })
            })
          })
@@ -20,30 +22,25 @@ $(function(){ //anonymous function
            function Song(id, comments) {
              this.id = id
              this.comments = comments
-            //  console.log(id, comments)
            }
-        // function comment(id, contents) {
-        //   this.id = id
-        //   this.content = content
-        // }
-        //
-          Song.prototype.formatSong = function() {
-          var songHtml = ''
-          songHtml += '<h5>' + this.user.username + 'said:' + '</h5>'
-          songHtml += '<h5>' + this.comment.content +  '</h5>'
-          return songHtml
-          console.log(songHtml)
+          Song.prototype.appendToElement = function(element) {
+          // var songHtml = ''
+          // songHtml += '<h5>' + this.user.username + 'said:' + '</h5>'
+          // songHtml += '<h5>' + this.comments.content +  '</h5>'
+          // return songHtml
 
-          // var songString = `
-          //
-          //     <ul>
-          //   <li>
-          //      <em> ${this.user.username} said:</em>
-          //      ${this.content}
-          //   </li>
-          //   </ul>
-          // `;
-          // element.append(songString);
+
+
+          var songString = `
+            <ul>
+              <li>
+                 <em> ${this.user.username} said:</em>
+                 ${this.content}
+              </li>
+            </ul>
+          `
+
+          element.append(songString);
         }
 
 
