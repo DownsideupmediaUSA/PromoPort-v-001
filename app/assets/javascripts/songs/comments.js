@@ -10,9 +10,9 @@ $(function(){ //anonymous function
              data.forEach(function(song){
                var newSong = new Song(song.id, song.comments)
                var formattedSong = newSong.formatSong()
-              $("#comments").append(formattedSong);
-              //  $("#comment_content").val("");
-              //  var $ol = $("div.comments ol")
+              $("div.comments ol").append(formattedSong);
+               $("#comment_content").val("");
+               var $ol = $("div.comments ol")
 
               })
            })
@@ -23,6 +23,8 @@ $(function(){ //anonymous function
              this.id = id
              this.comments = comments
            }
+
+           
           Song.prototype.appendToElement = function(element) {
           // var songHtml = ''
           // songHtml += '<h5>' + this.user.username + 'said:' + '</h5>'
@@ -46,6 +48,23 @@ $(function(){ //anonymous function
 
 
 //////// submitting a comment/////////////
+//
+// $(function(){
+//   $("#input").on("submit", function(e){
+//    $.ajax({
+//      type: ($("input[name='_method']").val() || this.method),
+//      url: this.action,
+//      data: $(this).serialize(),
+//      success: function(response){
+//        $("#comment_content").val("");
+//        var $ol = $("div.comments ol")
+//        $ol.append(response);
+//        console.log(response)
+//      }
+//    });
+//     e.preventDefault();
+//   })
+// });
 
 
 

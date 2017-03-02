@@ -25,8 +25,8 @@ $(function() {
               .then(response => response.json())
               .then(song => {
                 $('.trackBanner').html('')
-
-                const newSong = new Song(song.id, song.title, song.artist, song.comments, song.user, song.image)
+                console.log(song)
+                const newSong = new Song(song.id, song.title, song.artist, song.comments, song.image, song.user)
                 const formattedSong = newSong.formatSongShow()
                 $('.trackBanner').append(formattedSong)
             })
@@ -52,12 +52,16 @@ $(function() {
           }
 
           Song.prototype.formatSongShow = function() {
-            const comments = this.comments.map(comments => `<li>${comments.user.username} said: ${comments.content} </li>`).join('')
+            console.log(this)
+            var comments = this.comments.map(comments => `<li>${comments.user.username} said: ${comments.content} </li>`).join('')
 
             var songHtml = `
-                            <a href="#" class="song-title" data-id=${this.id}><h4>${this.title}</h4></a>
+                            <h4>${this.title}</h4></a>
                             <h6>${this.artist.artist_name}</h6>
                             <h6># of comments: ${this.comments.length}</h6>
+                            <a href="/songs/${this.id}" class="leave-comment"><h6>Leave A Comment</h6>
+                            <img src=${this.image}/>
+
                             <h6>Comments:</h6>
                             <ul>
                             ${comments}
@@ -67,4 +71,3 @@ $(function() {
 
             return songHtml
           }
-// });

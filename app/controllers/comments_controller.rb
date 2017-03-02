@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :find_song, only: [:show]
 
   def index
+    @comments = Comment.all
     # @comments = @song.comments
     # respond_to do |format|
     #   format.html
@@ -15,12 +16,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-   @comment = @song.comments.build(comment_params)
+   @comment = @song.comments.new(comment_params)
    @comment.user_id = current_user.id
    username = current_user.username
    if @comment.save
   #  render 'create.js', :layout => false
-     render 'songs/show', :layout => false
+     render @songs, :layout => false
    else
      render 'songs/show'
    end
