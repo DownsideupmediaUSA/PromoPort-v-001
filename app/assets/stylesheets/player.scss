@@ -1,52 +1,52 @@
-.audio-player,
-.audio-player div,
-.audio-player h1,
-.audio-player a,
-.audio-player img,
-.audio-player span,
-.audio-player button {
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: none;
-}
-
-div.audio-player {
-    position: relative;
-    width: 1000px;
-    height: 100px;
-    background: #FFFFFF;
-
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-// control buttons//
-.audio-player h1 {
-    position: absolute;
-    top: 37px;
-    left: 400px;
-
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 14px;
-    color: #ececec;
-    text-shadow: 1px 1px 1px rgba(0,0,0, .5);
-}
-
-.audio-player .cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-
-.mejs__overlay-button {
-    background: url("/path/to/mejs-controls.svg") no-repeat;
-}
-.mejs__overlay-loading-bg-img {
-    background: transparent url("/path/to/mejs-controls.svg") -160px -40px no-repeat;
-}
-.mejs__button > button {
-    background: transparent url("/path/to/mejs-controls.svg") no-repeat;
-}
+// .audio-player,
+// .audio-player div,
+// .audio-player h1,
+// .audio-player a,
+// .audio-player img,
+// .audio-player span,
+// .audio-player button {
+//     margin: 0;
+//     padding: 0;
+//     border: none;
+//     outline: none;
+// }
+//
+// div.audio-player {
+//     position: relative;
+//     width: 1000px;
+//     height: 100px;
+//     background: #FFFFFF;
+//
+//     -webkit-border-radius: 3px;
+//     -moz-border-radius: 3px;
+//     border-radius: 3px;
+// }
+// // control buttons//
+// .audio-player h1 {
+//     position: absolute;
+//     top: 37px;
+//     left: 400px;
+//
+//     font-family: Helvetica, Arial, sans-serif;
+//     font-weight: bold;
+//     font-size: 14px;
+//     color: #ececec;
+//     text-shadow: 1px 1px 1px rgba(0,0,0, .5);
+// }
+//
+// .audio-player .cover {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+// }
+//
+//
+// .mejs__overlay-button {
+//     background: url("/path/to/mejs-controls.svg") no-repeat;
+// }
+// .mejs__overlay-loading-bg-img {
+//     background: transparent url("/path/to/mejs-controls.svg") -160px -40px no-repeat;
+// }
+// .mejs__button > button {
+//     background: transparent url("/path/to/mejs-controls.svg") no-repeat;
+// }

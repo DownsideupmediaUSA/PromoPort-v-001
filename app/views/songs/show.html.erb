@@ -1,13 +1,13 @@
 
 <div>
-  <%= image_tag @song.image.url(:thumb)%><br>
+  <%= image_tag @song.image.url(:thumb) unless @song.image.url.nil?%> <br>
     <h3>Title: <%= @song.title%></h3>
   <h4>Artist: <%= display_artist(@song)%></h4>
 </div>
 
 
 
-<button id="show_comments">Show Comments</button>
+<button id="show_comments">Comments</button>
 <section id="comments-section">
 <div id="comments_collection" style="display: none;">
   <br>
@@ -16,7 +16,7 @@
   <h4>All comments:</h4>
 
   <div class="comments">
-      <!-- <%= render 'comments/comments'%> -->
+
   </div>
 
 

@@ -25,7 +25,6 @@ $(function() {
               .then(response => response.json())
               .then(song => {
                 $('.trackBanner').html('')
-                console.log(song)
                 const newSong = new Song(song.id, song.title, song.artist, song.comments, song.image, song.user)
                 const formattedSong = newSong.formatSongShow()
                 $('.trackBanner').append(formattedSong)
@@ -59,14 +58,14 @@ $(function() {
                             <h4>${this.title}</h4></a>
                             <h6>${this.artist.artist_name}</h6>
                             <h6># of comments: ${this.comments.length}</h6>
-                            <a href="/songs/${this.id}" class="leave-comment"><h6>Leave A Comment</h6>
+                            <a href="/songs/${this.id}" class="leave-comment"><h6>Leave A Comment</h6></a>
                             <img src=${this.image}/>
 
                             <h6>Comments:</h6>
                             <ul>
                             ${comments}
                             </ul>
-                            <ba
+
                            `
 
             return songHtml

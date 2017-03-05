@@ -8,11 +8,11 @@ $(function(){ //anonymous function
          $('#comment_content').focus()
           $.get('/api/songs', function(data) {
              data.forEach(function(song){
-               var newSong = new Song(song.id, song.comments)
-               var formattedSong = newSong.formatSong()
-              $("div.comments ol").append(formattedSong);
+               const newSong = new Song(song.id, song.artist, song.comments)
+               const formattedSong = newSong.formatSongShow()
+              $("div.comments").append(formattedSong);
                $("#comment_content").val("");
-               var $ol = $("div.comments ol")
+          alert("wha???????")
 
               })
            })
@@ -21,11 +21,15 @@ $(function(){ //anonymous function
 
            function Song(id, comments) {
              this.id = id
+
              this.comments = comments
+
            }
 
-           
-          Song.prototype.appendToElement = function(element) {
+
+          Song.prototype.formatSongShow = function() {
+
+            var comments = this.comments.map(comments => `<li>${comments.user.username} said: ${comments.content} </li>`).join('')
           // var songHtml = ''
           // songHtml += '<h5>' + this.user.username + 'said:' + '</h5>'
           // songHtml += '<h5>' + this.comments.content +  '</h5>'
@@ -33,16 +37,15 @@ $(function(){ //anonymous function
 
 
 
-          var songString = `
+          var songHtml = `
             <ul>
               <li>
-                 <em> ${this.user.username} said:</em>
-                 ${this.content}
+                 ${comments}
               </li>
             </ul>
           `
 
-          element.append(songString);
+          element.append(songHtml);
         }
 
 

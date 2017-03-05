@@ -15,4 +15,4 @@
 //= require bootstrap
 //= require_tree
 //= require ./songs/songs
-//= require ./songs/new_comment
+//= require ./songs/comments

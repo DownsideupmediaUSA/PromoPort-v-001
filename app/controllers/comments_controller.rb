@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :find_song, only: [:show]
+  before_action :find_song, only: [:show, :create]
 
   def index
     @comments = Comment.all
@@ -15,15 +15,19 @@ class CommentsController < ApplicationController
    render json: @songs
   end
 
+  def new
+    @comment = Comment.new
+  end
+
   def create
    @comment = @song.comments.new(comment_params)
    @comment.user_id = current_user.id
    username = current_user.username
    if @comment.save
   #  render 'create.js', :layout => false
-     render @songs, :layout => false
+    redirect_to 'songs/show' , :layout => false
    else
-     render 'songs/show'
+     render 'songs/new'
    end
   end
 
