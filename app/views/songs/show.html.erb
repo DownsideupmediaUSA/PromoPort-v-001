@@ -7,7 +7,7 @@
 
 
 
-<button id="show_comments">Comments</button>
+<button id="show_comments" data-id="<%=@song.id%>">Comments</button>
 <section id="comments-section">
 <div id="comments_collection" style="display: none;">
   <br>
@@ -16,25 +16,21 @@
   <h4>All comments:</h4>
 
   <div class="comments">
-
+  <%= render 'comments/comments' %>
   </div>
 
 
   <div class="new_comment">
-    <h4>Add a Comment:</h4>
+    <h5>Add a Comment:</h5>
     <%= form_for([@song, @song.comments.build]) do |f|  %>
       <p>
         <%= f.text_field :content %>
-        <%= f.submit %>
+        <%= f.submit id="Leave Comment"%>
       </p>
     <% end %>
-    <%= button_tag 'Previous',  class: 'js-prev', data: {id: @song.id}%>
-    <%= button_tag 'Next',  class: 'js-next', data: {id: @song.id}%>
+    <!-- <%= button_tag 'Previous',  class: 'js-prev', data: {id: @song.id}%>
+    <%= button_tag 'Next',  class: 'js-next', data: {id: @song.id}%> -->
 
   </div>
 </div>
 </section>
-
-
-<br><br>
-Back to <%= link_to "All Tracks", songs_path%>

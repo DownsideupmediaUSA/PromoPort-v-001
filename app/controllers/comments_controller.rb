@@ -24,11 +24,13 @@ class CommentsController < ApplicationController
    @comment.user_id = current_user.id
    username = current_user.username
    if @comment.save
-  #  render 'create.js', :layout => false
-    redirect_to 'songs/show' , :layout => false
-   else
-     render 'songs/new'
+     render json: @comment
    end
+
+
+  #  else
+  #    render "songs/show"
+  #  end
   end
 
   def show
