@@ -1,7 +1,7 @@
 $(function(){ //anonymous function
 /////////////COMMENTS SECTION//////////
 
-      $(".show_comments").on("click", function(e){
+      $("#show_comments").on("click", function(e){
 
         e.preventDefault();
         let id = $(this).data('id')
