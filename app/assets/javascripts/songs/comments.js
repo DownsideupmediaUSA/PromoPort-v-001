@@ -8,7 +8,7 @@ $(function(){ //anonymous function
          $('#comments_collection').fadeToggle()
           $('#comment_content').focus()
            $.get(`/api/songs/${id}`, function(song) {
-             console.log(song)
+
              var newSongC = SongC()
              newSongC.create(song)
 
@@ -93,37 +93,35 @@ $(function(){ //anonymous function
 //
 //
 //
-//   $(".new_comment").on("click", function(e){
-//
-//   // 1. we need the URL to submit the POST request too
-//      // 2. we need the form data.
-//
-//
-//      $.ajax({
-//        type: ($("input[name='_method']").val() || this.method),
-//        url: this.action,
-//        data: $(this),
-//        success: function(response){
-//          $("#comment_content").val("");
-//         //  var $ol = $("div.comments ol")
-//         //  $ol.append(response);
-//         // debugger
-//         // $.get(`/api/comments`, function(comment) {
-//         //
-//         //
-//         //   var newComment = new Comment(comment.id, comment.user, comment.content)
-//         //   var formattedComment = newComment.formatComments()
-//         //
-//         //   $(".comments ol").append(formattedComment)
-//         //
-//         //  console.log(formattedSong)
-//        }
-//      });
-//
-//      // Send a POST request to the correct place that form would've gone too anyway
-//      // along with the actual form data.
-//      e.preventDefault();
-//    })
+  $(".new_comment").on("click", function(e){
+     e.preventDefault();
+    alert("jacked")
+
+     $.ajax({
+       type: ($("input[name='_method']").val() || this.method),
+       url: this.action,
+       data: $(this),
+       success: function(response){
+         $("#comment_content").val("");
+         var $ol = $("div.comments ol")
+         $ol.append(response);
+        // debugger
+        // $.get(`/api/comments`, function(comment) {
+        //
+        //
+        //   var newComment = new Comment(comment.id, comment.user, comment.content)
+        //   var formattedComment = newComment.formatComments()
+        //
+        //   $(".comments ol").append(formattedComment)
+        //
+         console.log(response)
+       }
+     });
+
+     // Send a POST request to the correct place that form would've gone too anyway
+     // along with the actual form data.
+
+   });
 //
 //
 //    function Comment(id, user, content) {

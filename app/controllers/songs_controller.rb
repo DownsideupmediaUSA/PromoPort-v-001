@@ -56,7 +56,7 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
 
 
-    @song.save
+  
     respond_to do |format|
      if @song.save
        format.html { redirect_to @song, notice: 'Schmoove....Your track was successfully created.' }
