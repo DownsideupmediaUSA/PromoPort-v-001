@@ -1,22 +1,50 @@
-$(function(){ //anonymous function
+$(function() { //anonymous function
 /////////////COMMENTS SECTION//////////
 
       $("#show_comments").on("click", function(e){
-
         e.preventDefault();
         let id = $(this).data('id')
          $('#comments_collection').fadeToggle()
           $('#comment_content').focus()
            $.get(`/api/songs/${id}`, function(song) {
-
              var newSongC = SongC()
              newSongC.create(song)
-
              $(".comments ol").append(newSongC.formatSongsShow())
-
            })
          })
+         $(".new_comment").on("submit", function(e){
+            e.preventDefault();
+
+
+            $.ajax({
+              type: ($("input[name='_method']").val() || this.method),
+              url: this.action,
+              data: $(this).serialize(),
+              success: function(response){
+                // alert("this is huh")
+                // $("#comment_content").val("");
+                // var $ol = $(".comments ol")
+                // $ol.append(response);
+
+              //  debugger
+              //  $.get(`/api/comments`, function(comment) {
+
+
+                //  var newComment = new Comment(comment.id, comment.user, comment.content)
+                //  var formattedComment = newComment.formatComments()
+                 //
+                //  $(".comments ol").append(formattedComment)
+
+
+              }
+
+            })
+            $.ajaxPrefilter(function( options, originalOptions, jqXHR ) { options.async = true; });
+          });
+
        })
+
+
 
  const SongC = function() {
    return {
@@ -26,19 +54,22 @@ $(function(){ //anonymous function
        }
      },
 
-     formatSongsShow() {
-      //  var comments = this.comments.map(comments => `<li>${comments.user.username} said: ${comments.content} </li>`).join('')
+    formatSongsShow() {
       var comments = this.comments.map(comments =>
         `<li>${comments.user.username} said: ${comments.content} </li>`
       ).join('')
       var songHtml = `
         <ul>
           ${comments}
-        </ul>
-      `
-      return songHtml
-    },
-   }
+          </ul>
+        `
+        return songHtml
+      }
+    }
+
+
+
+
 
 
 //            function Song(id, comments) {
@@ -93,35 +124,31 @@ $(function(){ //anonymous function
 //
 //
 //
-  $(".new_comment").on("click", function(e){
-     e.preventDefault();
-    alert("jacked")
-
-     $.ajax({
-       type: ($("input[name='_method']").val() || this.method),
-       url: this.action,
-       data: $(this),
-       success: function(response){
-         $("#comment_content").val("");
-         var $ol = $("div.comments ol")
-         $ol.append(response);
-        // debugger
-        // $.get(`/api/comments`, function(comment) {
-        //
-        //
-        //   var newComment = new Comment(comment.id, comment.user, comment.content)
-        //   var formattedComment = newComment.formatComments()
-        //
-        //   $(".comments ol").append(formattedComment)
-        //
-         console.log(response)
-       }
-     });
-
-     // Send a POST request to the correct place that form would've gone too anyway
-     // along with the actual form data.
-
-   });
+  // $(".new_comment").on("click", function(e){
+  //    e.preventDefault();
+  //   alert("jacked")
+  //
+  //    $.ajax({
+  //      type: ($("input[name='_method']").val() || this.method),
+  //      url: this.action,
+  //      data: $(this),
+  //      success: function(response){
+  //        $("#comment_content").val("");
+  //        var $ol = $("div.comments ol")
+  //        $ol.append(response);
+  //       // debugger
+  //       // $.get(`/api/comments`, function(comment) {
+  //       //
+  //       //
+  //       //   var newComment = new Comment(comment.id, comment.user, comment.content)
+  //       //   var formattedComment = newComment.formatComments()
+  //       //
+  //       //   $(".comments ol").append(formattedComment)
+  //       //
+  //        console.log(response)
+  //      }
+  //    })
+  //  });
 //
 //
 //    function Comment(id, user, content) {
@@ -150,4 +177,4 @@ $(function(){ //anonymous function
 
 
 
-};
+}

@@ -7,7 +7,6 @@ $(function() {
    $("#all_tracks").on("click", function(e){
      e.preventDefault();
      $('#songs_collection').fadeToggle()
-
       $.get('/api/songs', function(data) {
         $("#songs_collection").html('')
         data.forEach(function(song){
@@ -66,5 +65,7 @@ const Song = function() {
       `
       return songHtml
     }
+   }
+
+
   }
-}

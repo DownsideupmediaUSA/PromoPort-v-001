@@ -24,7 +24,9 @@ class CommentsController < ApplicationController
    @comment.user_id = current_user.id
    username = current_user.username
    if @comment.save
-     render json: @comment
+    #  render json: @comment
+    render 'create.js', :layout => false
+
    end
 
 
