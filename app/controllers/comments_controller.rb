@@ -3,11 +3,6 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
-    # @comments = @song.comments
-    # respond_to do |format|
-    #   format.html
-    #   format.js { render @comments }
-    # end
   end
 
   def api_index
@@ -24,15 +19,10 @@ class CommentsController < ApplicationController
    @comment.user_id = current_user.id
    username = current_user.username
    if @comment.save
-    #  render json: @comment
     render 'create.js', :layout => false
-
+   else
+     render "songs/show"
    end
-
-
-  #  else
-  #    render "songs/show"
-  #  end
   end
 
   def show
